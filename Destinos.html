@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encuentra tu destino</title>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+
+      .titulo {
+        color: rgb(0, 0, 0);
+      }
+
+      .card {
+        background-color: gray;
+        padding-bottom: 15px;
+        width: 100%;
+        height: 119px;
+        border: 2px solid black;
+      }
+
+      .card-img-top {
+        width: 200px;
+        height: 134px;
+      }
+
+      .btn {
+        padding: 7px 10px;
+        background-color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .card-title {
+        text-align: center;
+        font-size: 30px;
+      }
+
+      .barraBusqueda {
+        padding-bottom: 30px;
+      }
+
+      table {
+        border-collapse: collapse;
+      }
+
+      td {
+        border: 2px solid black;
+        padding-left: 10px;
+        padding-right: 10px;
+        background-color: burlywood;
+
+        height: 90px;
+      }
+
+      th {
+        background-color: beige;
+        border: 2px solid black;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="titulo">Busqueda de destinos</h1>
+    <div class="barraBusqueda">
+      <label for="busqueda">Busqueda:</label>
+
+      <select name="Busqueda" id="Busqueda">
+        <option value="Todos">Todos</option>
+        <option value="Nombre">Nombre</option>
+        <option value="Ubicacion">Ubicacion</option>
+        <option value="Categoria">Categoria</option>
+      </select>
+
+      <label for="filtrar">Filtrar por:</label>
+      <select name="Filtrado" id="Filtrado">
+        <option value="Todos">Todos</option>
+        <option value="Nombre">Precio</option>
+        <option value="Ubicacion">Clasificación</option>
+        <option value="Categoria">Actividades disponibles</option>
+      </select>
+    </div>
+
+    <div class="card" style="display: flex">
+      <img class="card-img-top" src="Imagenes/destino1.jpeg" alt="Hotel" />
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Calificacion</th>
+              <th>Descripcion</th>
+              <th>Categoria</th>
+            </tr>
+            <tr>
+              <td>Destino A</td>
+              <td>Alto</td>
+              <td>4.87 / 5</td>
+              <td>
+                El destino A es un buen lugar que ofrece una gran experiencia.
+              </td>
+              <td>Elegante, familiar</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <br />
+    <div class="card" style="display: flex">
+      <img class="card-img-top" src="Imagenes/destino2.jpeg" alt="Hotel" />
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Calificacion</th>
+              <th>Descripcion</th>
+              <th>Categoria</th>
+            </tr>
+            <tr>
+              <td>Destino B</td>
+              <td>Medio</td>
+              <td>4.2 / 5</td>
+              <td>El destino B es una gran experiencia para toda la familia</td>
+              <td>Aventura, familiar</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <br />
+    <div class="card" style="display: flex">
+      <img class="card-img-top" src="Imagenes/destino3.webp" alt="Hotel" />
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Calificacion</th>
+              <th>Descripcion</th>
+              <th>Categoria</th>
+            </tr>
+            <tr>
+              <td>Destino C</td>
+              <td>Bajo</td>
+              <td>3.87 / 5</td>
+              <td>
+                El destino C es para los más aventureros, explora el centro de
+                puntarenas.
+              </td>
+              <td>Exploracion, caminata.</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <br />
+    <div class="card" style="display: flex">
+      <img class="card-img-top" src="Imagenes/destino4.jpeg" alt="Hotel" />
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Calificacion</th>
+              <th>Descripcion</th>
+              <th>Categoria</th>
+            </tr>
+            <tr>
+              <td>Destino D</td>
+              <td>Alto</td>
+              <td>4.92 / 5</td>
+              <td>Disfruta de las hermosas playas de puntarenas.</td>
+              <td>Playa, Montaña y sol.</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <br />
+    <div class="card" style="display: flex">
+      <img class="card-img-top" src="Imagenes/destino5.webp" alt="Hotel" />
+      <div class="card-body">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Calificacion</th>
+              <th>Descripcion</th>
+              <th>Categoria</th>
+            </tr>
+            <tr>
+              <td>Destino E</td>
+              <td>Medio</td>
+              <td>4.3 / 5</td>
+              <td>
+                El destino E es excelente para los que quieren pasar una tarde
+                tarde tranquila.
+              </td>
+              <td>Aventura, familiar</td>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

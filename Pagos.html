@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: lightblue;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150vh;
+            margin: 0;
+        }
+
+        .main{  
+            background-color: cadetblue;
+            padding: 65px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;   
+            max-width: 490px;
+            text-align: center;
+        }
+
+        .details-container{
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            max-height: 568px;
+            text-align: left;
+        }
+
+        .main, .details-container {
+            margin-right: 0px; /* Ajustar espacio entre elementos*/
+        }
+
+        .checkout-container{
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        .details-container{
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            max-height: 576px;
+            text-align: left;
+        }
+
+        .paymentMethods{
+            width:40px;
+            margin:0 5px;
+            border-radius: 50%;
+        }
+
+        .payment-methods-icons{
+            margin-top: 10px;
+        }
+
+        .button {
+            padding: 7px 10px;
+            background-color:cadetblue;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+        }
+
+        button{
+            padding: 7px 10px;
+            background-color:white;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: cadetblue;
+            color: white;
+        }
+
+       h1{
+        color: cadetblue;
+       }
+
+       .input{
+        margin-bottom: 15px;
+       }
+
+        .input label{
+            display: block;
+            font-size:14px;
+            margin-bottom: 5px;
+        }
+
+        .input input{
+            width: 90.5%;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .input2{
+        margin-bottom: 15px;
+       }
+
+        .input2 label{
+            display:block;
+            font-size:14px;
+            margin-bottom: 5px;
+        }
+
+        .input2 input{
+            width: 85%;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .finalize-container{
+            display: flex;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .finalize-container input{
+            margin-right:10px; 
+            cursor: pointer;
+        }
+
+        .finalize-container label{
+            font-size: 12px;
+        }
+
+        .buttons{
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .details-container{
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+        }
+
+        /* TABLES */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            font-weight: bolder;
+            font-size: smaller;
+        }
+
+        table td {
+            height: 30px;
+            font-weight: 100;
+        }
+
+        table tbody tr td:first-child {
+            text-align: left;
+        }
+
+    </style>
+
+</head>
+    <div class="main">
+
+        <div class="checkout-container">
+            <h1 for="Payment-method">Payment method</h1>
+            <div class="payment-methods-icons">
+                <label for="payment-methods-icons"> Debit and Credit Cards </label>
+                <br>
+                <img class="paymentMethods" title="instagram" src="Imagenes/amex-logo.webp" alt="logo de American Express">
+                <img class="paymentMethods" title="facebook" src="Imagenes/visaImg.png" alt="logo de Visa">
+                <img class="paymentMethods" title="google" src="Imagenes/mastercardImg.png" alt="logo de MasterCard">
+                <img class="paymentMethods" title="facebook" src="Imagenes/dinerClubImg.png" alt="logo de Diners Club">
+                <img class="paymentMethods" title="google" src="Imagenes/discoverImg.png" alt="logo de Discover">
+            </div>
+
+            <div class="input">
+                <label for="Holder-name">Name of the holder:</label>
+                <input type="text" placeholder="Enter it exactly as it appears on the card">
+            </div>
+
+            <div class="input">
+                <label for="Card-number">Card number:</label>
+                <input type="text" placeholder="0000 0000 0000 0000">
+            </div>
+
+            <div style="display: flex;" class="input2">
+                <div>
+                    <label for="card-expiration">Expiration date:</label>
+                    <input type="text" placeholder="MM/YY">
+                </div>
+                <div>
+                    <label for="card-code">Security code:</label>
+                    <input type="text" placeholder="CVV">
+                </div>
+            </div>
+
+            <div class="finalize-container">
+                <div class="buttons">
+                    <button style="background-color: rgb(224, 53, 53); margin-bottom: 8px;" type="submit">Finalize payment</button>
+                    <br>
+                    <label for="legaltext">By continuing you are accepting our <a href="">Terms and Conditions</a></label>
+                </div>
+            </div>
+            <div>
+                <label style="color: rgb(255, 255, 255);">blank</label>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="details-container"> 
+        <h2> Purchase details </h2>
+        <table>
+            <caption style="text-align: left;"> Tourist Destinations </caption>
+            <tbody>
+                <tr>
+                    <td>Destination 1 reservation</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td>Destination 2 reservation</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td>Destination 3 reservation</td>
+                    <td>$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table>
+            <caption style="text-align: left;"> Activities </caption>
+            <tbody>
+                <tr>
+                    <td>Activity 1 reservation</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td>Activity 2 reservation</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td>Activity 3 reservation</td>
+                    <td>$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <table>
+            <caption style="text-align: left;"> Services </caption>
+            <tbody>
+                <tr>
+                    <td>Hotel reservation</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td>Plane tickets</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td>Tourist guide service</td>
+                    <td>$0.00</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold;">Total:</td>
+                    <td style="font-weight: bold;">$0.00</td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+
+</html>
