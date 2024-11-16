@@ -1,218 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Encuentra tu destino</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <style>
-      body {
-        background-color: #FC9D64;
-        font-family: Arial, Helvetica, sans-serif;
-
+        .imghead {
+        height: 300px;
+        width: 100%;
       }
-
-      .titulo {
-        color: rgb(0, 0, 0);
+      .barranaranja {
+        height: 100px;
+        background-color: orange;
       }
 
       .card {
-        background-color: gray;
-        height: 100%;
-        border: 2px solid black;
-        border-radius: 5px;
-      }
 
-      .card-img-top {
-        width: 15%;
-        height: 10%;
+        display: flex;
+        border: 1px solid #ccc;
+        border-radius: 16px; /* Rounded edges */
+        overflow: hidden;
+        margin: 20px;
+        max-width: 100%; /* Almost full width */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+        background-color: white; /* Card background */
       }
-
-      .btn {
-        padding: 7px 10px;
-        background-color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        cursor: pointer;
+      .card img {
+        width: 150px; /* Adjust the width as needed */
+        height: auto;
       }
-
+      .card-content {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      
       .card-title {
-        text-align: center;
-        font-size: 30px;
+        font-size: 1.5em;
+        margin: 0;
+        color: #333; /* Darker color for title */
+      }
+      .card-description {
+        margin: 8px 0;
+        color: #555;
       }
 
-      .barraBusqueda {
-        padding-bottom: 30px;
-      }
-
-      table {
-        border-collapse: collapse;
-        width: auto;
-      }
-
-      td {
-        width: auto;
-        border: 2px solid black;
-        padding: auto;
-        background-color: #ADD0C7;
-
-        height: 90px;
-      }
-
-      th {
-        width: auto;
-        background-color:  #535EAD;
-        border: 2px solid black;
-        padding: 10px;
+      .card-price {
+        font-size: 1.2em;
+        font-weight: bold;
+        color: #333;
       }
     </style>
-  </head>
-  <body>
-    <h1 class="titulo">Busqueda de destinos</h1>
-    <div class="barraBusqueda">
-      <label for="busqueda">Busqueda:</label>
+</head>
+<body>
+    <header><img class="imghead" src="Imagenes/puntarenas.jpg" alt="" /></header>
+    <div class="barranaranja"></div>
 
-      <select name="Busqueda" id="Busqueda">
-        <option value="Todos">Todos</option>
-        <option value="Nombre">Nombre</option>
-        <option value="Ubicacion">Ubicacion</option>
-        <option value="Categoria">Categoria</option>
-      </select>
-
-      <label for="filtrar">Filtrar por:</label>
-      <select name="Filtrado" id="Filtrado">
-        <option value="Todos">Todos</option>
-        <option value="Nombre">Precio</option>
-        <option value="Ubicacion">Clasificación</option>
-        <option value="Categoria">Actividades disponibles</option>
-      </select>
-    </div>
-
-    <div class="card" style="display: flex">
-      <img class="card-img-top" src="Imagenes/destino1.jpeg" alt="Hotel" />
-      <div class="card-body">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Calificacion</th>
-              <th>Descripcion</th>
-              <th>Categoria</th>
-            </tr>
-            <tr>
-              <td>Destino A</td>
-              <td>Alto</td>
-              <td>4.87 / 5</td>
-              <td>
-                El destino A es un buen lugar que ofrece una gran experiencia.
-              </td>
-              <td>Elegante, familiar</td>
-            </tr>
-          </thead>
-        </table>
+    <div class="card">
+        <img src="Imagenes/destino1.jpeg" alt="Product Image" />
+        <div class="card-content">
+          <h2 class="card-title">Destino A</h2>
+          <p class="card-description">
+            El destino A es un buen lugar que ofrece una gran experiencia.
+          </p>
+          <p class="card-price">$69.99 | Review: 3/5</p>
+        </div>
       </div>
-    </div>
-    <br />
-    <div class="card" style="display: flex">
-      <img class="card-img-top" src="Imagenes/destino2.jpeg" alt="Hotel" />
-      <div class="card-body">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Calificacion</th>
-              <th>Descripcion</th>
-              <th>Categoria</th>
-            </tr>
-            <tr>
-              <td>Destino B</td>
-              <td>Medio</td>
-              <td>4.2 / 5</td>
-              <td>El destino B es una gran experiencia para toda la familia</td>
-              <td>Aventura, familiar</td>
-            </tr>
-          </thead>
-        </table>
+
+      <div class="card">
+        <img src="Imagenes/destino2.jpeg" alt="Product Image" />
+        <div class="card-content">
+          <h2 class="card-title">Destino B</h2>
+          <p class="card-description">
+            El destino B es una gran experiencia para toda la familia
+          </p>
+          <p class="card-price">$49.99 | Review: 4/5</p>
+        </div>
       </div>
-    </div>
-    <br />
-    <div class="card" style="display: flex">
-      <img class="card-img-top" src="Imagenes/destino3.webp" alt="Hotel" />
-      <div class="card-body">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Calificacion</th>
-              <th>Descripcion</th>
-              <th>Categoria</th>
-            </tr>
-            <tr>
-              <td>Destino C</td>
-              <td>Bajo</td>
-              <td>3.87 / 5</td>
-              <td>
-                El destino C es para los más aventureros, explora el centro de
+
+      <div class="card">
+        <img src="Imagenes/destino3.webp" alt="Product Image" />
+        <div class="card-content">
+          <h2 class="card-title">Destino C</h2>
+          <p class="card-description">
+            El destino C es para los más aventureros, explora el centro de
                 puntarenas.
-              </td>
-              <td>Exploracion, caminata.</td>
-            </tr>
-          </thead>
-        </table>
+          </p>
+          <p class="card-price">$4.99 | Review: 1/5</p>
+        </div>
       </div>
-    </div>
-    <br />
-    <div class="card" style="display: flex">
-      <img class="card-img-top" src="Imagenes/destino4.jpeg" alt="Hotel" />
-      <div class="card-body">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Calificacion</th>
-              <th>Descripcion</th>
-              <th>Categoria</th>
-            </tr>
-            <tr>
-              <td>Destino D</td>
-              <td>Alto</td>
-              <td>4.92 / 5</td>
-              <td>Disfruta de las hermosas playas de puntarenas.</td>
-              <td>Playa, Montaña y sol.</td>
-            </tr>
-          </thead>
-        </table>
+
+      <div class="card">
+        <img src="Imagenes/destino4.jpeg" alt="Product Image" />
+        <div class="card-content">
+          <h2 class="card-title">Destino D</h2>
+          <p class="card-description">
+            Disfruta de las hermosas playas de puntarenas.
+          </p>
+          <p class="card-price">$149.99 | Review: 5/5</p>
+        </div>
       </div>
-    </div>
-    <br />
-    <div class="card" style="display: flex">
-      <img class="card-img-top" src="Imagenes/destino5.webp" alt="Hotel" />
-      <div class="card-body">
-        <table>
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Precio</th>
-              <th>Calificacion</th>
-              <th>Descripcion</th>
-              <th>Categoria</th>
-            </tr>
-            <tr>
-              <td>Destino E</td>
-              <td>Medio</td>
-              <td>4.3 / 5</td>
-              <td>
-                El destino E es excelente para los que quieren pasar una tarde
+
+      <div class="card">
+        <img src="Imagenes/destino5.webp" alt="Product Image" />
+        <div class="card-content">
+          <h2 class="card-title">Destino E</h2>
+          <p class="card-description">
+            El destino E es excelente para los que quieren pasar una tarde
                 tarde tranquila.
-              </td>
-              <td>Aventura, familiar</td>
-            </tr>
-          </thead>
-        </table>
+          </p>
+          <p class="card-price">$29.99 | Review: 4/5</p>
+        </div>
       </div>
-    </div>
-  </body>
+</body>
 </html>
