@@ -179,3 +179,85 @@ app.delete('/api/usuarios/:id', (req, res) => { // Ruta para eliminar un usuario
         res.status(400).json({ Error: 'Id de usuario no valido' });
     }
 })
+app.get('/api/resenas', (req, res) => { // Ruta para obtener todos las reseñas
+    const page = req.query.page || 0; 
+    const resenasPerPage = 20; // Número de reseñas por página
+    let resenas = []; // Arreglo para almacenar los reseñas
+    db.collection('resenas') // Consulta las reseñas
+    .find()
+    .sort({ id: 1 }) // Ordena las reseñas por id
+    .skip(resenasPerPage * page) // Salta las reseñas de las páginas anteriores
+    .limit(resenasPerPage)
+    .forEach(resena => resenas.push(resena)) // Almacena las reseñas en el arreglo
+    .then(() => {
+        res.status(200).json(resenas); // Envia las reseñas en formato JSON
+    })
+    .catch(() => {
+        res.status(500).json({ error: 'Error al consultar las reseñas' });
+    });
+})
+app.get('/api/resenas/:id', (req, res) => { // Ruta para obtener una reseña por id
+    const resenaId = parseInt(req.params.id); // Obtiene el id de la reseña
+    if(!isNaN(resenaId)){ // Verifica que el id sea un número
+        db.collection('resenas')
+        .findOne({ id: resenaId }) // Consulta la reseña por id
+        .then(resena => {
+            if(resena){
+                res.status(200).json(resena); // Envia el destino en formato JSON
+            } else {
+                res.status(404).json({ msg: 'Reseña no encontrada' });
+            }
+        })
+        .catch(() => {
+            res.status(500).json({ msg: 'Error al consultar la reseña' });
+        })
+    } else {
+        res.status(400).json({ Error: 'Id de reseña no valido' });
+    }
+})
+app.post('/api/resenas', (req, res) => { // Ruta para insertar una reseña
+    const resena = req.body; // Obtiene el destino del body
+    db.collection('resenas')
+    .insertOne(resena) // Inserta la reseña
+    .then((result) => {
+        res.status(201).json({ result });
+    })
+    .catch(() => {
+        res.status(500).json({ msg: 'Error al insertar la reseña' });
+    })
+})
+app.patch('/api/resenas/:id', (req, res) => { // Ruta para actualizar una reseña por id
+    let update = req.body; // Obtiene los datos a actualizar del body
+    const resenaId = parseInt(req.params.id); // Obtiene el id de la reseña
+    if(!isNaN(resenaId)){ // Verifica que el id sea un número
+        db.collection('resenas')
+        .updateOne({ id: resenaId }, { $set: update }) // Actualiza la reseña por id
+        .then((result) => {
+            if(result.matchedCount > 0){
+                res.status(200).json({ result });
+            } else {
+                res.status(404).json({ msg: 'Reseña no encontrada' });
+            }
+        })
+        .catch(() => {
+            res.status(500).json({ msg: 'Error al actualizar la reseña' });
+        })
+    } else {
+        res.status(400).json({ Error: 'Id de reseña no valido' });
+    }
+})
+app.delete('/api/resenas/:id', (req, res) => { // Ruta para eliminar una reseña por id
+    const resenaId = parseInt(req.params.id); // Obtiene el id de la reseña
+    if(!isNaN(resenaId)){ // Verifica que el id sea un número
+        db.collection('resenas')
+        .deleteOne({ id: resenaId }) // Elimina la reseña por id
+        .then((result) => {
+            res.status(204).json({ result });
+        })
+        .catch(() => {
+            res.status(500).json({ msg: 'Error al eliminar la reseña' });
+        })
+    } else {
+        res.status(400).json({ Error: 'Id de reseña no valido' });
+    }
+})
