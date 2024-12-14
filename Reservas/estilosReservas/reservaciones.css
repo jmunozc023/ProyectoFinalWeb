@@ -1,0 +1,337 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* -------------------------- Barra de navegación -------------------------- */
+
+/* Barra de navegación principal */
+.barranaranja {
+  background-color: #f8a06a; /* Color naranja */
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Limita el ancho total */
+  gap: 10px;
+}
+
+/* Estilo del logo */
+.logo a {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Estilo de los enlaces */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffe4c4; /* Efecto hover */
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar input {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-right: 5px;
+  outline: none;
+}
+
+.search-bar button {
+  background-color: white;
+  color: #f8a06a;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #ffe4c4;
+}
+
+/* Filtro */
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.filter label {
+  color: white;
+  font-size: 14px;
+  margin-right: 5px;
+}
+
+.filter select {
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: white;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+
+.filter select:hover {
+  background-color: #ffe4c4;
+}
+
+
+/* -------------------------- Header -------------------------- */
+.header {
+  text-align: left;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+/* Galería de imágenes */
+.image-gallery {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+  gap: 10px;
+  background: #f9f9f9;
+}
+
+.image-gallery img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Secciones generales */
+
+/*antes margin estaba en 20 y max width en 900*/
+.service-info,
+.reservation-form,
+.room-availability,
+.review-section {
+  margin: 15px auto; /* Centramos los márgenes */
+  padding: 15px;
+  border-radius: 8px;
+  background: #fff;
+  max-width: 1000px; /* Limitamos el ancho de las secciones */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Para un efecto visual más limpio */
+}
+
+
+.service-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Botones */
+button {
+  background-color: #367434; /* Azul para el botón Buscar */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2d602c;
+}
+
+/* Estilos para la tabla */
+.room-availability {
+  margin: 15px auto;
+  padding: 20px;
+  max-width: 1000px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-availability h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #007BFF;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+tbody td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f4f4f4;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+
+tbody td span {
+  display: block;
+  color: gray;
+  font-size: 0.9rem;
+}
+
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: #007BFF;
+}
+
+
+/* Reviews */
+
+.reviews-section {
+  margin: 15px auto;
+  padding: 20px;
+  max-width: 1000px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section{
+  text-align: Left;
+  margin-bottom: 15px;
+}
+
+.reviews-list {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 5px;
+}
+
+#leave-review-btn {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#leave-review-btn:hover {
+  background-color: #0056b3;
+}
+
+#review-form {
+  text-align: center;
+}
+
+#review-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#review-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+#review-form select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#submit-review-btn {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submit-review-btn:hover {
+  background-color: #0056b3;
+}
+
+.cancel-btn {
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: #a71d2a;
+}

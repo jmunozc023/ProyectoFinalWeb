@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservaciones</title>
+    <link rel="stylesheet" href="Styles/reservaciones.css" />
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <div class="barranaranja">
+      <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="#">Puntarenas</a>
+        </div>
+  
+        <!-- Enlaces de navegación -->
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+  
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+          <input type="text" placeholder="Search...">
+          <button type="button">🔍</button>
+        </div>
+  
+        <!-- Filtro -->
+        <div class="filter">
+          <label for="filter">Filtrar por:</label>
+          <select id="filter">
+            <option value="">Categoría</option>
+            <option value="precio">Precio</option>
+          </select>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Encabezado del servicio -->
+    <header class="header">
+      <h1>Hotel Balmoral</h1>
+    </header>
+
+    <!-- Galería de imágenes -->
+    <section class="image-gallery">
+      <img src="hotel1.jpg" alt="Habitación del hotel" />
+      <img src="hotel2.jpg" alt="Lobby del hotel" />
+      <img src="hotel3.jpg" alt="Restaurante del hotel" />
+    </section>
+
+    <main class="main-content">
+      <!-- Información del servicio -->
+      <section class="service-info">
+        <h2>Descripción</h2>
+        <p>
+          El Hotel Balmoral ofrece habitaciones cómodas con Wi-Fi gratuito,
+          desayuno incluido y una ubicación céntrica en la ciudad.
+        </p>
+        <ul>
+          <li>Ubicación: Centro de San José</li>
+          <li>Servicios: Piscina, gimnasio, restaurante</li>
+        </ul>
+      </section>
+
+      <!--Formulario de reservación -->
+      <section class="reservation-form">
+        <h2>Buscar habitaciones</h2>
+        <form id="search-form">
+          <label for="checkin">Fecha de entrada:</label>
+          <input type="date" id="checkin" name="checkin" required />
+
+          <label for="checkout">Fecha de salida:</label>
+          <input type="date" id="checkout" name="checkout" required />
+
+          <button type="submit" class="search-btn">Buscar</button>
+        </form>
+      </section>
+
+      <section class="room-availability">
+        <h2>Habitaciones disponibles</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tipo de habitación</th>
+              <th>Número de personas</th>
+              <th>Precio por noche</th>
+              <th>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Habitación Doble - 2 camas<br /><span
+                  >2 camas dobles grandes</span
+                >
+              </td>
+              <td>👤 x4</td>
+              <td>$120</td>
+              <td>
+                <select>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Habitación con cama grande<br /><span>1 cama doble grande</span>
+              </td>
+              <td>👤 x2</td>
+              <td>$100</td>
+              <td>
+                <select>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Habitación con cama grande, balcón y vistas al mar<br /><span
+                  >1 cama doble grande</span
+                >
+              </td>
+              <td>👤 x2</td>
+              <td>$150</td>
+              <td>
+                <select>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Habitación Doble con balcón y vistas al mar - 2 camas
+                individuales<br /><span>2 camas dobles grandes</span>
+              </td>
+              <td>👤 x4</td>
+              <td>$180</td>
+              <td>
+                <select>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- Reseñas y calificaciones -->
+      <section class="reviews-section">
+        <h2>Reseñas</h2>
+        <!-- Listado de reseñas existentes -->
+        <div class="reviews-list">
+          <p><strong>Usuario 1:</strong> Muy buena experiencia. ★★★★★</p>
+          <p><strong>Usuario 2:</strong> Excelente servicio. ★★★★☆</p>
+        </div>
+
+        <!-- Botón para habilitar la sección de dejar reseña -->
+        <button id="leave-review-btn">Dejar reseña</button>
+
+        <!-- Formulario de reseñas oculto por defecto -->
+        <div id="review-form" style="display: none">
+          <label for="review-text">Dejar una reseña:</label>
+          <textarea
+            id="review-text"
+            rows="3"
+            placeholder="Escribe tu reseña aquí"
+          ></textarea>
+          <label for="review-rating">Calificación:</label>
+          <select id="review-rating">
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button id="submit-review-btn">Enviar reseña</button>
+          <button id="cancel-review-btn" class="cancel-btn">Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <script>
+    document
+      .getElementById("search-form")
+      .addEventListener("submit", function (event) {
+        const checkin = document.getElementById("checkin").value;
+        const checkout = document.getElementById("checkout").value;
+
+        if (!checkin || !checkout) {
+          event.preventDefault(); // Detiene el envío del formulario
+          alert("Por favor selecciona las fechas de entrada y salida.");
+        }
+      });
+    // Mostrar el formulario al hacer clic en "Dejar reseña"
+    document
+      .getElementById("leave-review-btn")
+      .addEventListener("click", function () {
+        document.getElementById("review-form").style.display = "block"; // Muestra el formulario
+        this.style.display = "none"; // Oculta el botón "Dejar reseña"
+      });
+
+    // Ocultar el formulario al hacer clic en "Cancelar"
+    document
+      .getElementById("cancel-review-btn")
+      .addEventListener("click", function () {
+        document.getElementById("review-form").style.display = "none"; // Oculta el formulario
+        document.getElementById("leave-review-btn").style.display = "block"; // Muestra el botón "Dejar reseña"
+      });
+  </script>
+</html>
