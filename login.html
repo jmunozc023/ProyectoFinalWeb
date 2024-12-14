@@ -4,101 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        body{
-            background-color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-
-        .button {
-            padding: 7px 10px;
-            background-color:cadetblue;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            display: inline-block;
-        }
-
-        button{
-            padding: 7px 10px;
-            background-color:#119E7B;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover{
-            background-color: #007D5E;
-            color: white;
-        }
-
-        .login-container{
-            background-color: #41a48b84;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 350px;
-            text-align: left;
-        }
-
-        .main{  
-            background-color: #f36a1b7c;
-            padding: 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 100%;   
-            max-width: 430px;
-            text-align: center;
-        }
-
-       h1{
-        color: white;
-        margin-bottom: 20px;
-       }
-
-       .input{
-        margin-bottom: 15px;
-       }
-
-        .input label{
-            display: block;
-            font-size:14px;
-            margin-bottom: 5px;
-        }
-
-        .input input{
-            width: 100%;
-            padding: 8px;
-            border-radius: 5px;
-            font-size: 14px;
-        }
-
-        .buttons{
-            margin-top: 10px;
-            cursor: pointer;
-            max-width: fit-content;
-        }
-    </style>
+    <link rel="stylesheet" href="estilosLogin.css">
 
 </head>
 <div class="main">
     <h1>Login</h1>
 
-    <div class="login-container"> 
+    <form class="login-container"> 
         <div class="input">
-            <label for="first-name">Email:</label>
+            <label for="email">Email:</label>
             <input type="text" placeholder="Enter your email">
         </div>
 
         <div class="input">
-            <label for="second-name">Password:</label>
+            <label for="password">Password:</label>
             <input type="text" placeholder="Enter your password">
         </div>
         
@@ -106,8 +25,13 @@
     <div class="buttons">
         <button type="submit">Login</button>
     </div>
-   </div>
+   </form>
     
 </div>
+
+  
+
+<script src="app.js"></script>
+<script src="db.js"></script>
 </body>
 </html>
