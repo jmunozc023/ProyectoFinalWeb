@@ -261,3 +261,86 @@ app.delete('/api/resenas/:id', (req, res) => { // Ruta para eliminar una reseña
         res.status(400).json({ Error: 'Id de reseña no valido' });
     }
 })
+
+app.get('/api/reservas', (req, res) => { // Ruta para obtener todos las reservas
+    const page = req.query.page || 0; 
+    const reservasPerPage = 20; // Número de reservas por página
+    let reservas = []; // Arreglo para almacenar los reservas
+    db.collection('reservas') // Consulta las reservas
+    .find()
+    .sort({ id: 1 }) // Ordena las reservas por id
+    .skip(reservasPerPage * page) // Salta las reseñas de las páginas anteriores
+    .limit(reservasPerPage)
+    .forEach(reserva => reservas.push(reserva)) // Almacena las reservas en el arreglo
+    .then(() => {
+        res.status(200).json(reservas); // Envia las reservas en formato JSON
+    })
+    .catch(() => {
+        res.status(500).json({ error: 'Error al consultar las reservas' });
+    });
+})
+app.get('/api/reservas/:id', (req, res) => { // Ruta para obtener una reserva por id
+    const reservaId = parseInt(req.params.id); // Obtiene el id de la reseña
+    if(!isNaN(reservaId)){ // Verifica que el id sea un número
+        db.collection('reservas')
+        .findOne({ id: reservaId }) // Consulta la reserva por id
+        .then(reserva => {
+            if(reserva){
+                res.status(200).json(reserva); // Envia el destino en formato JSON
+            } else {
+                res.status(404).json({ msg: 'Reserva no encontrada' });
+            }
+        })
+        .catch(() => {
+            res.status(500).json({ msg: 'Error al consultar la reserva' });
+        })
+    } else {
+        res.status(400).json({ Error: 'Id de reserva no valido' });
+    }
+})
+app.post('/api/reservas', (req, res) => { // Ruta para insertar una reserva
+    const reserva = req.body; // Obtiene el destino del body
+    db.collection('reservas')
+    .insertOne(reserva) // Inserta la reserva
+    .then((result) => {
+        res.status(201).json({ result });
+    })
+    .catch(() => {
+        res.status(500).json({ msg: 'Error al insertar la reserva' });
+    })
+})
+app.patch('/api/reservas/:id', (req, res) => { // Ruta para actualizar una reserva por id
+    let update = req.body; // Obtiene los datos a actualizar del body
+    const reservaId = parseInt(req.params.id); // Obtiene el id de la reserva
+    if(!isNaN(reservaId)){ // Verifica que el id sea un número
+        db.collection('reservas')
+        .updateOne({ id: reservaId }, { $set: update }) // Actualiza la reserva por id
+        .then((result) => {
+            if(result.matchedCount > 0){
+                res.status(200).json({ result });
+            } else {
+                res.status(404).json({ msg: 'Reserva no encontrada' });
+            }
+        })
+        .catch(() => {
+            res.status(500).json({ msg: 'Error al actualizar la reserva' });
+        })
+    } else {
+        res.status(400).json({ Error: 'Id de reserva no valido' });
+    }
+})
+app.delete('/api/reserva/:id', (req, res) => { // Ruta para eliminar una reserva por id
+    const reservaId = parseInt(req.params.id); // Obtiene el id de la reserva
+    if(!isNaN(reservaId)){ // Verifica que el id sea un número
+        db.collection('reservas')
+        .deleteOne({ id: reservaId }) // Elimina la reserva por id
+        .then((result) => {
+            res.status(204).json({ result });
+        })
+        .catch(() => {
+            res.status(500).json({ msg: 'Error al eliminar la reserva' });
+        })
+    } else {
+        res.status(400).json({ Error: 'Id de reserva no valido' });
+    }
+})
