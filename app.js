@@ -28,7 +28,7 @@ app.get('/api/destinos', (req, res) => { // Ruta para obtener todos los destinos
     .catch(() => {
         res.status(500).json({ error: 'Error al consultar los destinos' });
     });
-})
+});
 app.get('/api/destinos/:id', (req, res) => { // Ruta para obtener un destino por id
     const destinoId = parseInt(req.params.id); // Obtiene el id del destino
     if(!isNaN(destinoId)){ // Verifica que el id sea un número
@@ -47,7 +47,7 @@ app.get('/api/destinos/:id', (req, res) => { // Ruta para obtener un destino por
     } else {
         res.status(400).json({ Error: 'Id de destino no valido' });
     }
-})
+});
 
 app.post('/api/destinos', (req, res) => { // Ruta para insertar un destino
     const destino = req.body; // Obtiene el destino del body
@@ -59,7 +59,7 @@ app.post('/api/destinos', (req, res) => { // Ruta para insertar un destino
     .catch(() => {
         res.status(500).json({ msg: 'Error al insertar el destino' });
     })
-})
+});
 
 app.patch('/api/destinos/:id', (req, res) => { // Ruta para actualizar un destino por id
     let update = req.body; // Obtiene los datos a actualizar del body
@@ -80,7 +80,7 @@ app.patch('/api/destinos/:id', (req, res) => { // Ruta para actualizar un destin
     } else {
         res.status(400).json({ Error: 'Id de destino no valido' });
     }
-})
+});
 
 app.delete('/api/destinos/:id', (req, res) => { // Ruta para eliminar un destino por id
     const destinoId = parseInt(req.params.id); // Obtiene el id del destino
@@ -96,7 +96,7 @@ app.delete('/api/destinos/:id', (req, res) => { // Ruta para eliminar un destino
     } else {
         res.status(400).json({ Error: 'Id de destino no valido' });
     }
-})
+});
 app.get('/api/usuarios', (req, res) => { // Ruta para obtener todos los usuarios
     const page = req.query.page || 0; 
     const usuariosPerPage = 20; // Número de usuarios por página
@@ -113,7 +113,7 @@ app.get('/api/usuarios', (req, res) => { // Ruta para obtener todos los usuarios
     .catch(() => {
         res.status(500).json({ error: 'Error al consultar los usuarios' });
     });
-})
+});
 app.get('/api/usuarios/:id', (req, res) => { // Ruta para obtener un usuario por id
     const usuarioId = parseInt(req.params.id); // Obtiene el id del usuario
     if(!isNaN(usuarioId)){ // Verifica que el id sea un número
@@ -132,7 +132,7 @@ app.get('/api/usuarios/:id', (req, res) => { // Ruta para obtener un usuario por
     } else {
         res.status(400).json({ Error: 'Id de usuario no valido' });
     }
-})
+});
 app.post('/api/usuarios', (req, res) => { // Ruta para insertar un usuario
     const usuario = req.body; // Obtiene el destino del body
     db.collection('usuarios')
