@@ -1,6 +1,17 @@
 const express = require('express'); // Importa el módulo express
 const {connectToDb , getDb} = require('./db'); // Importa las funciones de db.js
 const app = express(); // Crea una instancia de express
+//configuraciones
+app.set('port', process.env.PORT || 3000);
+app.set('views', path.join(__dirname, 'views')); // Establece la carpeta de vistas
+app.engine('hbs', exphbs({
+    defaultLayout:'main',
+    layoutsDir: path.join(app.get('views'), 'layouts'),
+    partialsDir: path.join(app.get('views'), 'partials'),
+    extname: '.hbs'
+}));
+app.set('view engine', '.hbs');
+//Midlewares
 app.use(express.json()); // Middleware para parsear el body de las peticiones
 let db; // Variable para almacenar la conexión a la base de datos
 connectToDb((err) => { // Conecta a la base de datos
