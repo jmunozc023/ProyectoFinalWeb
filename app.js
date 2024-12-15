@@ -1,6 +1,9 @@
 const express = require('express'); // Importa el módulo express
 const {connectToDb , getDb} = require('./db'); // Importa las funciones de db.js
 const app = express(); // Crea una instancia de express
+//configuraciones
+
+//Midlewares
 app.use(express.json()); // Middleware para parsear el body de las peticiones
 let db; // Variable para almacenar la conexión a la base de datos
 connectToDb((err) => { // Conecta a la base de datos
