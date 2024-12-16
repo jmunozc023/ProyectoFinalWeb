@@ -5,14 +5,8 @@ const exphbs = require('express-handlebars'); // Importa el módulo express-hand
 //Inicializaciones
 const app = express(); // Crea una instancia de express
 //configuraciones
-//app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views')); // Establece la carpeta de vistas
-app.engine('hbs', exphbs({
-    defaultLayout:'main',
-    layoutsDir: path.join(app.get('views'), 'layouts'),
-    partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs'
-}));
+
+//Midlewares
 app.use(express.json()); // Middleware para parsear el body de las peticiones
 let db; // Variable para almacenar la conexión a la base de datos
 connectToDb((err) => { // Conecta a la base de datos
