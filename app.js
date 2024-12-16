@@ -1,7 +1,5 @@
 const express = require('express'); // Importa el módulo express
-const path = require('path'); // Importa el módulo path
 const {connectToDb , getDb} = require('./db'); // Importa las funciones de db.js
-const exphbs = require('express-handlebars'); // Importa el módulo express-handlebars
 //Inicializaciones
 const app = express(); // Crea una instancia de express
 //configuraciones
