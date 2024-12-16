@@ -1,4 +1,4 @@
-const { MongoClient } = require("mongodb");
+/*const { MongoClient } = require("mongodb");
 let dbConnection;
 let uri = "mongodb://localhost:27017/dbProyFinWeb";
 module.exports = {
@@ -14,4 +14,4 @@ module.exports = {
         });
     },
     getDb: () => dbConnection
-}
+}*/

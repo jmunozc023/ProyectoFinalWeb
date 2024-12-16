@@ -1,22 +1,23 @@
-const express = require('express'); // Importa el módulo express
-const {connectToDb , getDb} = require('./db'); // Importa las funciones de db.js
+import express from 'express'; // Importa el módulo express
+import mongoose from 'mongoose'; // Importa el módulo mongoose
+import bodyParser from 'body-parser'; // Importa el módulo body-parser
+// const {connectToDb , getDb} = require('./db'); // Importa las funciones de db.js
 //Inicializaciones
 const app = express(); // Crea una instancia de express
 //configuraciones
 
 //Midlewares
+app.use(bodyParser.urlencoded({ extended: true })); // Middleware para parsear el body de las peticiones
 app.use(express.json()); // Middleware para parsear el body de las peticiones
-let db; // Variable para almacenar la conexión a la base de datos
-connectToDb((err) => { // Conecta a la base de datos
-    if (!err) {
+mongoose.connect('mongodb://localhost:27017/dbProyFinWeb', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => {
         app.listen(3001, () => {
             console.log('Server running on http://localhost:3001'); // Inicia el servidor
         });
-        db = getDb(); // Obtiene la conexión a la base de datos
-    }
-});
+    })
+    .catch(err => console.error(err));
 
-app.get('/api/destinos', (req, res) => { // Ruta para obtener todos los destinos
+/*app.get('/api/destinos', (req, res) => { // Ruta para obtener todos los destinos
     const page = req.query.page || 0; 
     const destinosPerPage = 20; // Número de destinos por página
     let destinos = []; // Arreglo para almacenar los destinos
@@ -52,7 +53,6 @@ app.get('/api/destinos/:id', (req, res) => { // Ruta para obtener un destino por
         res.status(400).json({ Error: 'Id de destino no valido' });
     }
 });
-
 app.post('/api/destinos', (req, res) => { // Ruta para insertar un destino
     const destino = req.body; // Obtiene el destino del body
     db.collection('destinos')
@@ -347,4 +347,59 @@ app.delete('/api/reserva/:id', (req, res) => { // Ruta para eliminar una reserva
     } else {
         res.status(400).json({ Error: 'Id de reserva no valido' });
     }
-})
+});*/
+app.get("/ProyectoFinalWeb", function (_, res) {
+    res.sendFile(__dirname + "/register");
+});
+
+const destinosSchema = {
+    id: Number,
+    location: String,
+    descripcion: String,
+    costo_entrada: Number
+}
+const usuariosSchema = {
+    id: Number,
+    last_name: String,
+    birthday: Date,
+    email: String,
+    password: String
+}
+const destinos = mongoose.model("destinos", destinosSchema);
+const usuarios = mongoose.model("usuarios", usuariosSchema);
+
+app.post("ProyectoFinalWeb/destinos", function (req, res) {
+    const newDestino = new destinos({
+        id: req.body.id,
+        name: req.body.name,
+        location: req.body.location,
+        descripcion: req.body.descripcion,
+        costo_entrada: req.body.costo_entrada
+    });
+    newDestino.save(function (err) {
+        if (!err) {
+            res.send("Successfully added a new destination");
+        } else {
+            res.send(err);
+        }
+    });
+});
+
+app.post('/ProyectoFinalWeb/register', (req, res) => {
+    const newUser = new usuarios({
+        id: req.body.id,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        birthday: req.body.birthday,
+        email: req.body.email,
+        password: req.body.password
+    });
+
+    newUser.save((err) => {
+        if (!err) {
+            res.status(201).send("Successfully registered a new user");
+        } else {
+            res.status(500).send(err);
+        }
+    });
+});
