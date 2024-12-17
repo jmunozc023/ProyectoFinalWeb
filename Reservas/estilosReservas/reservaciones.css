@@ -10,11 +10,10 @@ body {
 
 /* Barra de navegación principal */
 .barranaranja {
-  background-color: #f8a06a; /* Color naranja */
+  background-color: #f8a06a; /* Color de fondo */
   display: flex;
   justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px 20px;
+  padding: 20px 10px;
 }
 
 .navbar {
@@ -61,37 +60,38 @@ body {
 
 /* Barra de búsqueda */
 .search-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  width: 300px; /* Ajusta el tamaño */
 }
 
 .search-bar input {
+  width: 100%;
+  padding: 10px;
   border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 14px;
-  margin-right: 5px;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   outline: none;
+  font-size: 16px;
+  padding-right: 0; /* Espacio para la lupa */
 }
 
+/* Botón con la lupa */
 .search-bar button {
-  background-color: white;
-  color: #f8a06a;
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
   border: none;
-  border-radius: 5px;
-  padding: 5px 10px;
+  background: none;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  transition: background-color 0.3s;
 }
 
-.search-bar button:hover {
-  background-color: #ffe4c4;
+.search-bar button img {
+  width: 20px; /* Tamaño de la lupa */
+  height: 20px;
 }
 
-/* Filtro */
+/* Filtro
 .filter {
   display: flex;
   align-items: center;
@@ -117,7 +117,7 @@ body {
 .filter select:hover {
   background-color: #ffe4c4;
 }
-
+*/
 
 /* -------------------------- Header -------------------------- */
 .header {
@@ -168,19 +168,55 @@ body {
   padding: 0;
 }
 
-/* Botones */
-button {
-  background-color: #367434; /* Azul para el botón Buscar */
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
+/* Estilo general del formulario */
+.reservation-form {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-button:hover {
-  background-color: #2d602c;
+.reservation-form h2 {
+  margin-bottom: 20px;
 }
+
+.reservation-form label {
+  margin: 10px 0 5px;
+}
+
+.reservation-form input {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.reservation-form button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.search-btn {
+  margin-left: 200px;
+  background-color: #3b8938;
+  color: white;
+}
+
+.reset-btn {
+  background-color: #DC3545;
+  color: white;
+}
+
+.reservation-form button:hover {
+  opacity: 0.9;
+}
+
 
 /* Estilos para la tabla */
 .room-availability {
@@ -203,7 +239,7 @@ table {
 }
 
 thead th {
-  background-color: #007BFF;
+  background-color: #f8a06a;
   color: white;
   padding: 10px;
   text-align: left;
@@ -239,7 +275,68 @@ select {
 
 select:focus {
   outline: none;
-  border-color: #007BFF;
+  border-color: #3b8938;
+}
+
+/* Botones de Incrementación */
+
+.increment-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.increment-buttons button {
+  background-color: #f8a06a;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.increment-buttons button:hover {
+  background-color: #e78a50;
+}
+
+.increment-buttons input {
+  width: 30px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Seleccionar y continuar */
+
+.continue-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#select-continue {
+  background-color: #5e5e5e;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: not-allowed;
+  border-radius: 5px;
+  transition: background-color 0.3s, cursor 0.3s;
+}
+
+#select-continue.enabled {
+  cursor: pointer;
+  background-color: #3b8938;
+}
+
+#select-continue.enabled:hover {
+  background-color: #558f54;
 }
 
 
@@ -271,7 +368,7 @@ select:focus {
   display: block;
   margin: 0 auto 20px;
   padding: 10px 15px;
-  background-color: #007BFF;
+  background-color: #3b8938;
   color: white;
   border: none;
   border-radius: 5px;
@@ -280,7 +377,7 @@ select:focus {
 }
 
 #leave-review-btn:hover {
-  background-color: #0056b3;
+  background-color: #558f54;
 }
 
 #review-form {
@@ -311,7 +408,7 @@ select:focus {
 
 #submit-review-btn {
   padding: 10px 15px;
-  background-color: #007BFF;
+  background-color: #3b8938;
   color: white;
   border: none;
   border-radius: 5px;
@@ -319,7 +416,7 @@ select:focus {
 }
 
 #submit-review-btn:hover {
-  background-color: #0056b3;
+  background-color: #558f54;
 }
 
 .cancel-btn {
@@ -333,5 +430,5 @@ select:focus {
 }
 
 .cancel-btn:hover {
-  background-color: #a71d2a;
+  background-color: #e36f7a;
 }

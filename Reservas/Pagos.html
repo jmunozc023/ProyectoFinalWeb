@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="estilosReservas/pagos.css" />
+    <title>Payment Page</title>
+  </head>
+  <body>
+    <!-- Barra de navegación -->
+    <div class="barranaranja">
+      <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="#">Puntarenas</a>
+        </div>
+
+        <!-- Enlaces de navegación -->
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+          <input type="text" placeholder="Search..." aria-label="Search" />
+          <button type="submit" aria-label="Search">🔍</button>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container">
+      <div class="main">
+        <div class="checkout-container">
+          <h1>Payment Method</h1>
+          <div class="payment-methods-icons">
+            <label for="payment-methods" class="payment-label"
+              >Debit and Credit Cards</label
+            >
+            <div class="payment-icons-container">
+              <img
+                class="paymentMethods"
+                src="Imagenes/amex-logo.webp"
+                alt="Logo de tarjeta American Express"
+              />
+              <img
+                class="paymentMethods"
+                src="Imagenes/visaImg.png"
+                alt="Logo de tarjeta Visa"
+              />
+              <img
+                class="paymentMethods"
+                src="Imagenes/mastercardImg.png"
+                alt="Logo de tarjeta MasterCard"
+              />
+              <img
+                class="paymentMethods"
+                src="Imagenes/dinerClubImg.png"
+                alt="Logo de tarjeta Diners Club"
+              />
+              <img
+                class="paymentMethods"
+                src="Imagenes/discoverImg.png"
+                alt="Logo de tarjeta Discover"
+              />
+            </div>
+          </div>
+
+          <div class="input">
+            <label for="holder-name">Name of the holder:</label>
+            <input
+              id="holder-name"
+              type="text"
+              placeholder="Enter it exactly as it appears on the card"
+              aria-label="Name of the cardholder"
+            />
+          </div>
+
+          <div class="input">
+            <label for="card-number">Card number:</label>
+            <input
+              id="card-number"
+              type="text"
+              placeholder="0000 0000 0000 0000"
+              aria-label="Card number"
+            />
+          </div>
+
+          <div class="input-group">
+            <div class="input-field">
+              <label for="card-expiration">Expiration date:</label>
+              <input
+                id="card-expiration"
+                type="text"
+                placeholder="MM/YY"
+                aria-label="Expiration date"
+              />
+            </div>
+            <div class="input-field">
+              <label for="card-code">Security code:</label>
+              <input
+                id="card-code"
+                type="text"
+                placeholder="CVV"
+                aria-label="Security code"
+              />
+            </div>
+          </div>
+
+          <div class="finalize-container">
+            <button class="finalize-button" type="submit">
+              Finalize Payment
+            </button>
+            <label for="terms"
+              >By continuing, you accept our
+              <a href="#">Terms and Conditions</a></label
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="details-container">
+        <h2>Purchase Details</h2>
+        <table>
+          <tfoot>
+            <tr>
+              <td>Total:</td>
+              <td>$0.00</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

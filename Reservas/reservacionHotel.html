@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reservaciones</title>
-    <link rel="stylesheet" href="Styles/reservaciones.css" />
+    <link rel="stylesheet" href="estilosReservas/reservaciones.css" />
   </head>
   <body>
     <!-- Barra de navegación -->
@@ -14,7 +14,7 @@
         <div class="logo">
           <a href="#">Puntarenas</a>
         </div>
-  
+
         <!-- Enlaces de navegación -->
         <ul class="nav-links">
           <li><a href="index.html">Home</a></li>
@@ -22,20 +22,11 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-  
+
         <!-- Barra de búsqueda -->
         <div class="search-bar">
-          <input type="text" placeholder="Search...">
-          <button type="button">🔍</button>
-        </div>
-  
-        <!-- Filtro -->
-        <div class="filter">
-          <label for="filter">Filtrar por:</label>
-          <select id="filter">
-            <option value="">Categoría</option>
-            <option value="precio">Precio</option>
-          </select>
+          <input type="text" placeholder="Search..." />
+          <button type="submit" aria-label="Search">🔍</button>
         </div>
       </nav>
     </div>
@@ -66,17 +57,23 @@
         </ul>
       </section>
 
-      <!--Formulario de reservación -->
+      <!-- Formulario de reservación -->
       <section class="reservation-form">
         <h2>Buscar habitaciones</h2>
         <form id="search-form">
+          <!-- Fecha de entrada -->
           <label for="checkin">Fecha de entrada:</label>
           <input type="date" id="checkin" name="checkin" required />
 
+          <!-- Fecha de salida -->
           <label for="checkout">Fecha de salida:</label>
           <input type="date" id="checkout" name="checkout" required />
 
+          <!-- Botones -->
           <button type="submit" class="search-btn">Buscar</button>
+          <button type="button" id="reset-btn" class="reset-btn">
+            Restablecer
+          </button>
         </form>
       </section>
 
@@ -99,14 +96,13 @@
                 >
               </td>
               <td>👤 x4</td>
-              <td>$120</td>
+              <td class="price" data-price="120">$120</td>
               <td>
-                <select>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+                <div class="increment-buttons">
+                  <button type="button" class="decrement">-</button>
+                  <input type="text" value="0" readonly class="room-count" />
+                  <button type="button" class="increment">+</button>
+                </div>
               </td>
             </tr>
             <tr>
@@ -114,14 +110,13 @@
                 Habitación con cama grande<br /><span>1 cama doble grande</span>
               </td>
               <td>👤 x2</td>
-              <td>$100</td>
+              <td class="price" data-price="100">$100</td>
               <td>
-                <select>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+                <div class="increment-buttons">
+                  <button type="button" class="decrement">-</button>
+                  <input type="text" value="0" readonly class="room-count" />
+                  <button type="button" class="increment">+</button>
+                </div>
               </td>
             </tr>
             <tr>
@@ -131,14 +126,13 @@
                 >
               </td>
               <td>👤 x2</td>
-              <td>$150</td>
+              <td class="price" data-price="150">$150</td>
               <td>
-                <select>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+                <div class="increment-buttons">
+                  <button type="button" class="decrement">-</button>
+                  <input type="text" value="0" readonly class="room-count" />
+                  <button type="button" class="increment">+</button>
+                </div>
               </td>
             </tr>
             <tr>
@@ -147,18 +141,20 @@
                 individuales<br /><span>2 camas dobles grandes</span>
               </td>
               <td>👤 x4</td>
-              <td>$180</td>
+              <td class="price" data-price="180">$180</td>
               <td>
-                <select>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                </select>
+                <div class="increment-buttons">
+                  <button type="button" class="decrement">-</button>
+                  <input type="text" value="0" readonly class="room-count" />
+                  <button type="button" class="increment">+</button>
+                </div>
               </td>
             </tr>
           </tbody>
         </table>
+        <div class="continue-container">
+          <button id="select-continue" disabled>Seleccionar y continuar</button>
+        </div>
       </section>
 
       <!-- Reseñas y calificaciones -->
@@ -197,6 +193,19 @@
   </body>
 
   <script>
+    // Esperar a que el DOM cargue
+    document.addEventListener("DOMContentLoaded", function () {
+      const resetButton = document.getElementById("reset-btn");
+      const checkinInput = document.getElementById("checkin");
+      const checkoutInput = document.getElementById("checkout");
+
+      // Función para restablecer las fechas
+      resetButton.addEventListener("click", function () {
+        checkinInput.value = ""; // Limpiar fecha de entrada
+        checkoutInput.value = ""; // Limpiar fecha de salida
+      });
+    });
+
     document
       .getElementById("search-form")
       .addEventListener("submit", function (event) {
@@ -208,6 +217,130 @@
           alert("Por favor selecciona las fechas de entrada y salida.");
         }
       });
+
+    //Verificar fecha de check in menor a check out
+
+    document
+      .getElementById("search-form")
+      .addEventListener("submit", function (event) {
+        const checkin = new Date(document.getElementById("checkin").value);
+        const checkout = new Date(document.getElementById("checkout").value);
+
+        if (checkin >= checkout) {
+          event.preventDefault();
+          alert("La fecha de salida debe ser posterior a la fecha de entrada.");
+        }
+      });
+/*
+    //Selectores incrementales para la cantidad de habitaciones
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Selecciona todos los contenedores de botones incrementales
+      const incrementContainers =
+        document.querySelectorAll(".increment-buttons");
+
+      incrementContainers.forEach((container) => {
+        const decrementBtn = container.querySelector(".decrement");
+        const incrementBtn = container.querySelector(".increment");
+        const countInput = container.querySelector(".room-count");
+
+        // Evento para el botón "-"
+        decrementBtn.addEventListener("click", () => {
+          let currentValue = parseInt(countInput.value, 10);
+          if (currentValue > 0) {
+            countInput.value = currentValue - 1;
+          }
+        });
+
+        // Evento para el botón "+"
+        incrementBtn.addEventListener("click", () => {
+          let currentValue = parseInt(countInput.value, 10);
+          if (currentValue < 10) {
+            // Límite máximo de 10 habitaciones
+            countInput.value = currentValue + 1;
+          }
+        });
+      });
+    });
+
+    */
+
+    // Recoger infro de habitaciones seleccionadas
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const incrementContainers =
+        document.querySelectorAll(".increment-buttons");
+      const continueBtn = document.getElementById("select-continue");
+
+      // Función para verificar si al menos una habitación está seleccionada
+      function checkSelection() {
+        let isAnySelected = false;
+
+        document.querySelectorAll(".room-count").forEach((input) => {
+          if (parseInt(input.value, 10) > 0) {
+            isAnySelected = true;
+          }
+        });
+
+        // Activar/desactivar el botón
+        if (isAnySelected) {
+          continueBtn.disabled = false;
+          continueBtn.classList.add("enabled");
+        } else {
+          continueBtn.disabled = true;
+          continueBtn.classList.remove("enabled");
+        }
+      }
+
+      // Añadir eventos a los botones "+" y "-"
+      incrementContainers.forEach((container) => {
+        const decrementBtn = container.querySelector(".decrement");
+        const incrementBtn = container.querySelector(".increment");
+        const countInput = container.querySelector(".room-count");
+
+        decrementBtn.addEventListener("click", () => {
+          let currentValue = parseInt(countInput.value, 10);
+          if (currentValue > 0) {
+            countInput.value = currentValue - 1;
+            checkSelection();
+          }
+        });
+
+        incrementBtn.addEventListener("click", () => {
+          let currentValue = parseInt(countInput.value, 10);
+          if (currentValue < 10) {
+            countInput.value = currentValue + 1;
+            checkSelection();
+          }
+        });
+      });
+
+      // Recoger datos al hacer clic en "Seleccionar y continuar"
+      continueBtn.addEventListener("click", () => {
+        const selectedRooms = [];
+
+        document.querySelectorAll("tbody tr").forEach((row) => {
+          const roomType = row.querySelector("td").innerText.trim();
+          const price = row.querySelector(".price").dataset.price;
+          const count = row.querySelector(".room-count").value;
+
+          if (parseInt(count, 10) > 0) {
+            selectedRooms.push({
+              type: roomType,
+              price: parseFloat(price),
+              quantity: parseInt(count, 10),
+            });
+          }
+        });
+
+        // Guardar los datos en localStorage para transferirlos
+        localStorage.setItem("selectedRooms", JSON.stringify(selectedRooms));
+
+        // Redirigir a la página de pagos
+        window.location.href = "Pagos.html";
+      });
+    });
+
     // Mostrar el formulario al hacer clic en "Dejar reseña"
     document
       .getElementById("leave-review-btn")
