@@ -206,7 +206,7 @@
       });
     });
 
-    document
+    /* document
       .getElementById("search-form")
       .addEventListener("submit", function (event) {
         const checkin = document.getElementById("checkin").value;
@@ -216,7 +216,7 @@
           event.preventDefault(); // Detiene el envío del formulario
           alert("Por favor selecciona las fechas de entrada y salida.");
         }
-      });
+      }); */
 
     //Verificar fecha de check in menor a check out
 
@@ -226,11 +226,18 @@
         const checkin = new Date(document.getElementById("checkin").value);
         const checkout = new Date(document.getElementById("checkout").value);
 
+        if (!checkin || !checkout) {
+          event.preventDefault(); // Detiene el envío del formulario
+          alert("Por favor selecciona las fechas de entrada y salida.");
+        }
+
         if (checkin >= checkout) {
           event.preventDefault();
           alert("La fecha de salida debe ser posterior a la fecha de entrada.");
         }
       });
+
+      
 /*
     //Selectores incrementales para la cantidad de habitaciones
 
@@ -265,7 +272,7 @@
 
     */
 
-    // Recoger infro de habitaciones seleccionadas
+    // Recoger info de habitaciones seleccionadas
 
     document.addEventListener("DOMContentLoaded", function () {
       const incrementContainers =

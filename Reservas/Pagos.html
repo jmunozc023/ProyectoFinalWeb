@@ -7,6 +7,7 @@
     <title>Payment Page</title>
   </head>
   <body>
+
     <!-- Barra de navegación -->
     <div class="barranaranja">
       <nav class="navbar">
@@ -22,98 +23,77 @@
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-
-        <!-- Barra de búsqueda -->
-        <div class="search-bar">
-          <input type="text" placeholder="Search..." aria-label="Search" />
-          <button type="submit" aria-label="Search">🔍</button>
-        </div>
       </nav>
     </div>
 
-    <div class="container">
+    <div class="payment-details-container">
+      <!-- Contenedor de Métodos de Pago -->
       <div class="main">
         <div class="checkout-container">
           <h1>Payment Method</h1>
           <div class="payment-methods-icons">
-            <label for="payment-methods" class="payment-label"
-              >Debit and Credit Cards</label
-            >
-            <div class="payment-icons-container">
+            <label for="payment-methods">Debit and Credit Cards</label>
+            <div class="payment-methods-box">
               <img
                 class="paymentMethods"
                 src="Imagenes/amex-logo.webp"
-                alt="Logo de tarjeta American Express"
+                alt="Logo de American Express"
+                style="margin-bottom: 5px;"
               />
               <img
                 class="paymentMethods"
                 src="Imagenes/visaImg.png"
-                alt="Logo de tarjeta Visa"
+                alt="Logo de Visa"
               />
               <img
                 class="paymentMethods"
                 src="Imagenes/mastercardImg.png"
-                alt="Logo de tarjeta MasterCard"
+                alt="Logo de MasterCard"
+                style="margin-bottom: 5px;"
               />
               <img
                 class="paymentMethods"
                 src="Imagenes/dinerClubImg.png"
-                alt="Logo de tarjeta Diners Club"
+                alt="Logo de Diners Club"
               />
               <img
                 class="paymentMethods"
                 src="Imagenes/discoverImg.png"
-                alt="Logo de tarjeta Discover"
+                alt="Logo de Discover"
               />
             </div>
           </div>
-
           <div class="input">
             <label for="holder-name">Name of the holder:</label>
             <input
               id="holder-name"
               type="text"
               placeholder="Enter it exactly as it appears on the card"
-              aria-label="Name of the cardholder"
             />
           </div>
-
           <div class="input">
             <label for="card-number">Card number:</label>
             <input
               id="card-number"
               type="text"
               placeholder="0000 0000 0000 0000"
-              aria-label="Card number"
             />
           </div>
-
           <div class="input-group">
             <div class="input-field">
               <label for="card-expiration">Expiration date:</label>
-              <input
-                id="card-expiration"
-                type="text"
-                placeholder="MM/YY"
-                aria-label="Expiration date"
-              />
+              <input id="card-expiration" type="text" placeholder="MM/YY" />
             </div>
             <div class="input-field">
               <label for="card-code">Security code:</label>
-              <input
-                id="card-code"
-                type="text"
-                placeholder="CVV"
-                aria-label="Security code"
-              />
+              <input id="card-code" type="text" placeholder="CVV" />
             </div>
           </div>
-
           <div class="finalize-container">
             <button class="finalize-button" type="submit">
               Finalize Payment
             </button>
-            <label for="terms"
+            <label style="font-size: 10px;"
               >By continuing, you accept our
               <a href="#">Terms and Conditions</a></label
             >
@@ -121,17 +101,108 @@
         </div>
       </div>
 
+      <!-- Contenedor de Detalles de Compra -->
       <div class="details-container">
         <h2>Purchase Details</h2>
-        <table>
-          <tfoot>
-            <tr>
-              <td>Total:</td>
-              <td>$0.00</td>
-            </tr>
-          </tfoot>
-        </table>
+        <div id="payment-details" class="payment-details"></div>
       </div>
     </div>
+    <script>
+      // Restricción para el input del nombre (solo letras, máximo 26 caracteres)
+      const holderNameInput = document.getElementById("holder-name");
+      holderNameInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/[^a-zA-Z\s]/g, ""); // Permite solo letras y espacios
+        if (value.length > 26) value = value.slice(0, 26); // Máximo 26 caracteres
+        e.target.value = value.toUpperCase(); // Convierte a mayúsculas
+      });
+    
+      // Formateo y validación del número de tarjeta (solo números, formato 0000 0000 0000 0000)
+      const cardNumberInput = document.getElementById("card-number");
+      cardNumberInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/\D/g, ""); // Elimina todo lo que no sea número
+        value = value.slice(0, 16); // Máximo 16 números
+        value = value.match(/.{1,4}/g)?.join(" ") || ""; // Agrupa en bloques de 4 con espacio
+        e.target.value = value;
+      });
+    
+      // Validación y formato de la fecha de expiración (solo números, formato MM/YY)
+      const cardExpirationInput = document.getElementById("card-expiration");
+      cardExpirationInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/\D/g, ""); // Elimina todo lo que no sea número
+        value = value.slice(0, 4); // Máximo 4 números
+        if (value.length >= 2) {
+          value = value.slice(0, 2) + "/" + value.slice(2); // Agrega la barra "/"
+        }
+        e.target.value = value;
+      });
+    
+      // Validación del código de seguridad (CVV) (solo números, máximo 3 caracteres)
+      const cardCodeInput = document.getElementById("card-code");
+      cardCodeInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/\D/g, ""); // Elimina todo lo que no sea número
+        if (value.length > 3) value = value.slice(0, 3); // Máximo 3 números
+        e.target.value = value;
+      });
+
+
+
+
+      // Mostrar datos de habitaciones seleccionadas en la página de pagos
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Recuperar los datos de habitaciones seleccionadas desde localStorage
+      const selectedRooms = JSON.parse(localStorage.getItem("selectedRooms"));
+
+      // Referencia al contenedor donde se mostrarán los datos
+      const paymentDetailsContainer =
+        document.getElementById("payment-details");
+
+      // Función para calcular el total
+      function calculateTotal(rooms) {
+        return rooms
+          .reduce((total, room) => total + room.price * room.quantity, 0)
+          .toFixed(2); // Total con dos decimales
+      }
+
+      // Verificar si hay datos disponibles
+      if (selectedRooms && selectedRooms.length > 0) {
+        // Generar las filas dinámicamente
+        selectedRooms.forEach((room) => {
+          const roomRow = document.createElement("div");
+          roomRow.className = "room-row";
+
+          roomRow.innerHTML = `
+        <span class="room-type">${room.type}</span>
+        <span class="room-quantity">Cantidad: ${room.quantity}</span>
+        <span class="room-price">Precio: $${room.price.toFixed(2)}</span>
+        <span class="room-total">Subtotal: $${(
+          room.price * room.quantity
+        ).toFixed(2)}</span>
+      `;
+
+          paymentDetailsContainer.appendChild(roomRow);
+        });
+
+        // Calcular y mostrar el total general
+        const totalRow = document.createElement("div");
+        totalRow.className = "total-row";
+
+        totalRow.innerHTML = `
+      <strong>Total a pagar: $${calculateTotal(selectedRooms)}</strong>
+    `;
+
+        paymentDetailsContainer.appendChild(totalRow);
+      } else {
+        // Mostrar un mensaje si no hay datos disponibles
+        paymentDetailsContainer.innerHTML =
+          "<p>No se seleccionaron habitaciones. Por favor, regresa y selecciona una.</p>";
+      }
+    });
+    </script>
+    
   </body>
 </html>
