@@ -1,3 +1,5 @@
+/* ============ El código a continuación es antes de la modificación de la verificación de fechas / Hora ============ */
+
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
@@ -151,8 +153,9 @@ body {
 
 /*antes margin estaba en 20 y max width en 900*/
 .service-info,
-.reservation-form,
-.room-availability,
+#room-types-section,
+#date-selector,
+#available-rooms-section,
 .review-section {
   margin: 15px auto; /* Centramos los márgenes */
   padding: 15px;
@@ -168,8 +171,9 @@ body {
   padding: 0;
 }
 
-/* Estilo general del formulario */
-.reservation-form {
+/* ============================== Estilos para selector de de fechas ============================== */
+
+#date-selector {
   background-color: #f8f8f8;
   padding: 20px;
   border-radius: 10px;
@@ -178,22 +182,22 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.reservation-form h2 {
+#date-selector h2 {
   margin-bottom: 20px;
 }
 
-.reservation-form label {
+#date-selector label {
   margin: 10px 0 5px;
 }
 
-.reservation-form input {
+#date-selector input {
   padding: 8px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.reservation-form button {
+#date-selector button {
   padding: 10px 15px;
   border: none;
   border-radius: 5px;
@@ -213,13 +217,14 @@ body {
   color: white;
 }
 
-.reservation-form button:hover {
+#date-selector button:hover {
   opacity: 0.9;
 }
 
 
-/* Estilos para la tabla */
-.room-availability {
+/* ============================== Estilos para Los tipos de habitaciones ============================== */
+
+#room-types-section {
   margin: 15px auto;
   padding: 20px;
   max-width: 1000px;
@@ -228,7 +233,68 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.room-availability h2 {
+#room-types-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  background-color: #f8a06a;
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+tbody td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f4f4f4;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+
+tbody td span {
+  display: block;
+  color: gray;
+  font-size: 0.9rem;
+}
+
+select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: white;
+}
+
+select:focus {
+  outline: none;
+  border-color: #3b8938;
+}
+
+/* ============================== Estilos para selección de habitaciones ============================== */
+
+#available-rooms-section {
+  margin: 15px auto;
+  padding: 20px;
+  max-width: 1000px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#available-rooms-section h2 {
   text-align: center;
   margin-bottom: 20px;
 }

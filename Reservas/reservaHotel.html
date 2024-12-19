@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservaciones</title>
+    <link rel="stylesheet" href="estilosReservas/reservaciones.css" />
+    <script src="JsReservas/reservaHotel.js"></script>
+  </head>
+  <body>
+    <!-- ============ El código a continuación es antes de la modificación de la verificación de fechas / Hora 11:25 ============-->
+
+    <!-- Barra de navegación -->
+    <div class="barranaranja">
+      <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="#">Puntarenas</a>
+        </div>
+
+        <!-- Enlaces de navegación -->
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <!-- Barra de búsqueda -->
+        <div class="search-bar">
+          <input type="text" placeholder="Search..." />
+          <button type="submit" aria-label="Search">🔍</button>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Encabezado del servicio -->
+    <header class="header">
+      <h1>Hotel Balmoral</h1>
+    </header>
+
+    <!-- Galería de imágenes -->
+    <section class="image-gallery">
+      <img src="hotel1.jpg" alt="Habitación del hotel" />
+      <img src="hotel2.jpg" alt="Lobby del hotel" />
+      <img src="hotel3.jpg" alt="Restaurante del hotel" />
+    </section>
+
+    <main class="main-content">
+      <!-- Información del servicio -->
+      <section class="service-info">
+        <h2>Descripción</h2>
+        <p>
+          El Hotel Balmoral ofrece habitaciones cómodas con Wi-Fi gratuito,
+          desayuno incluido y una ubicación céntrica en la ciudad.
+        </p>
+        <ul>
+          <li>Ubicación: Centro de San José</li>
+          <li>Servicios: Piscina, gimnasio, restaurante</li>
+        </ul>
+      </section>
+
+      <!-- ================================ Habitaciones del Hotel ================================ -->
+      <section id="room-types-section">
+        <div>
+          <h2>Habitaciones</h2>
+          <table id="room-types-table">
+            <thead>
+              <tr>
+                <th>Tipo de habitación</th>
+                <th>Número de personas</th>
+                <th>Precio por noche</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Habitación Doble - 2 camas<br /><span
+                    >2 camas dobles grandes</span
+                  >
+                </td>
+                <td>👤 x4</td>
+                <td class="price" data-price="120">$120</td>
+              </tr>
+              <tr>
+                <td>
+                  Habitación con cama grande<br /><span
+                    >1 cama doble grande</span
+                  >
+                </td>
+                <td>👤 x2</td>
+                <td class="price" data-price="100">$100</td>
+              </tr>
+              <tr>
+                <td>
+                  Habitación con cama grande, balcón y vistas al mar<br /><span
+                    >1 cama doble grande</span
+                  >
+                </td>
+                <td>👤 x2</td>
+                <td class="price" data-price="150">$150</td>
+              </tr>
+              <tr>
+                <td>
+                  Habitación Doble con balcón y vistas al mar - 2 camas
+                  individuales<br /><span>2 camas dobles grandes</span>
+                </td>
+                <td>👤 x4</td>
+                <td class="price" data-price="180">$180</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================================ Escoger Fechas ================================ -->
+
+      <section id="date-selector">
+        <h2>Buscar habitaciones</h2>
+        <div>
+          <label for="checkin">Fecha de entrada</label>
+          <input
+            type="date"
+            id="checkin"
+            name="checkin"
+            aria-describedby="checkin-error"
+            required
+          />
+          <label for="checkout">Fecha de salida</label>
+          <input
+            type="date"
+            id="checkout"
+            name="checkout"
+            aria-describedby="checkout-error"
+            required
+          />
+          <!-- Botones -->
+          <button type="button" id="search-btn" class="search-btn">
+            Buscar
+          </button>
+          <button type="button" id="reset-btn" class="reset-btn">
+            Restablecer
+          </button>
+          <!--
+          <span
+            id="checkin-error"
+            role="alert"
+            style="color: red; display: none"
+          ></span>
+          <span
+            id="checkout-error"
+            role="alert"
+            style="color: red; display: none"
+          ></span>
+          -->
+        </div>
+      </section>
+
+      <!-- ================================ Selección de habitaciones ================================ -->
+
+      <section id="available-rooms-section" style="display: none">
+        <div>
+          <h2>Habitaciones disponibles</h2>
+          <table id="available-rooms-table">
+            <thead>
+              <tr>
+                <th>Tipo de habitación</th>
+                <th>Número de personas</th>
+                <th>Precio por noche</th>
+                <th>Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Habitación Doble - 2 camas<br /><span
+                    >2 camas dobles grandes</span
+                  >
+                </td>
+                <td>👤 x4</td>
+                <td class="price" data-price="120">$120</td>
+                <td>
+                  <div class="increment-buttons">
+                    <button type="button" class="decrement">-</button>
+                    <input type="text" value="0" readonly class="room-count" />
+                    <button type="button" class="increment">+</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="continue-container">
+            <button id="select-continue" disabled>
+              Seleccionar y continuar
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================== Reseñas ====================================== -->
+
+      <!-- Reseñas y calificaciones -->
+      <section class="reviews-section">
+        <h2>Reseñas</h2>
+        <!-- Listado de reseñas existentes -->
+        <div class="reviews-list">
+          <p><strong>Usuario 1:</strong> Muy buena experiencia. ★★★★★</p>
+          <p><strong>Usuario 2:</strong> Excelente servicio. ★★★★☆</p>
+        </div>
+
+        <!-- Botón para habilitar la sección de dejar reseña -->
+        <button id="leave-review-btn">Dejar reseña</button>
+
+        <!-- Formulario de reseñas oculto por defecto -->
+        <div id="review-form" style="display: none">
+          <label for="review-text">Dejar una reseña:</label>
+          <textarea
+            id="review-text"
+            rows="3"
+            placeholder="Escribe tu reseña aquí"
+          ></textarea>
+          <label for="review-rating">Calificación:</label>
+          <select id="review-rating">
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button id="submit-review-btn">Enviar reseña</button>
+          <button id="cancel-review-btn" class="cancel-btn">Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
