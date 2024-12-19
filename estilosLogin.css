@@ -20,7 +20,7 @@ body{
 
 button{
     padding: 7px 10px;
-    background-color:#119E7B;
+    background-color:white;
     text-decoration: none;
     border-radius: 5px;
     cursor: pointer;
@@ -32,7 +32,7 @@ button:hover{
 }
 
 .login-container{
-    background-color: #41a48b84;
+    background-color: orange;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
