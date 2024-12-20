@@ -214,21 +214,27 @@ background-color: #0056b3;
 
 .imagenMenuDivIndex {
   max-width: 50px;
+  margin-left: 5%;
 }
 
 .LoginLinkIndex{
   color: #ADD0C7;
   padding-left: 20px;
   padding-top: 10px;
-  text-align: right;
+  display: flex;
+  justify-content: right;
+  
 }
 
 .ServiciosIndex {
   background-color: #fc9e6490;
   padding: 5px;
   border-radius: 5%;
-  max-width: 90%;
-  height: 300px;
+  display: flex;
+}
+
+.ServiciosIndex img{
+  border-radius: 10px;
 }
 
 .DiosIndex {
@@ -507,4 +513,17 @@ margin-bottom: 15px;
 .tablePagos .tbodyPagos .trPagos .tdPagos:first-child {
   background-color: #ADD0C7;
   text-align: left;
+}
+
+.tituloIndex{
+  color: black;
+  font-family: Italic;
+  font-size: 100px;
+  margin-left: 40px;
+}
+
+.logoIndex{
+  font-size: 20px;
+  font-family:'Times New Roman', Times, serif;
+  
 }
