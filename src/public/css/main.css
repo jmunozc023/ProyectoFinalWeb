@@ -65,14 +65,14 @@ border-color: #ffffff; /* Replace with your desired border color for the toggler
     color: #333;
   }
 
-  .navbar {
+/*.navbar {
 display: flex;
 justify-content: space-between;
 align-items: center;
 background-color:  #FC9D64;
 color: white;
 padding: 10px 20px;
-}
+}*/
 
 .logo a {
 text-decoration: none;
@@ -588,3 +588,49 @@ th, td {
     background-color: #dc3545;
     color: white;
 }
+.mapadiv{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mapadiv path{
+    fill: #ee7f30;
+    stroke: black;
+    stroke-width: 1px;
+}
+.mapadiv :hover{
+    fill: #FF0000;
+}
+/* Contenedor padre que agrupa método de pago y detalles */
+.payment-details-container {
+    display: flex; /* Flexbox para alinear elementos lado a lado */
+    justify-content: space-between; /* Espacio entre elementos */
+    background-color: #ADD0C7; /* Fondo común */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    margin: 0 auto; /* Centrar horizontalmente */
+    width: 1000px; /* Limitar el ancho */
+    gap: 15px; /* Espacio entre elementos */
+    margin-top: 80px;
+  }
+  .checkout-container h1 {
+    text-align: left;
+    color: black;
+  }
+  .payment-methods-icons {
+    margin-top: 10px;
+    text-align: left; /* Alinea todo a la izquierda */
+  }
+  .paymentMethods {
+    width: 40px;
+    height: auto;
+    border-radius: 5px; /* Opcional: bordes ligeramente redondeados */
+  }
+  
+    .main, .details-container {
+        padding: 20px;
+    }

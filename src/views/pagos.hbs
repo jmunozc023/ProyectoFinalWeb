@@ -1,0 +1,82 @@
+<div class="payment-details-container">
+      <!-- Contenedor de Métodos de Pago -->
+      <div class="main">
+        <div class="checkout-container">
+          <h1>Payment Method</h1>
+          <div class="payment-methods-icons">
+            <label for="payment-methods">Debit and Credit Cards</label>
+            <div class="payment-methods-box">
+              <img
+                class="paymentMethods"
+                src="/img/amex-logo.webp"
+                alt="Logo de American Express"
+                style="margin-bottom: 5px;"
+              />
+              <img
+                class="paymentMethods"
+                src="/img/visaImg.png"
+                alt="Logo de Visa"
+              />
+              <img
+                class="paymentMethods"
+                src="/img/mastercardImg.png"
+                alt="Logo de MasterCard"
+                style="margin-bottom: 5px;"
+              />
+              <img
+                class="paymentMethods"
+                src="/img/dinerClubImg.png"
+                alt="Logo de Diners Club"
+              />
+              <img
+                class="paymentMethods"
+                src="/img/discoverImg.png"
+                alt="Logo de Discover"
+              />
+            </div>
+          </div>
+          <div class="input">
+            <label for="holder-name">Name of the holder:</label>
+            <input
+              id="holder-name"
+              type="text"
+              placeholder="Enter it exactly as it appears on the card"
+            />
+          </div>
+          <div class="input">
+            <label for="card-number">Card number:</label>
+            <input
+              id="card-number"
+              type="text"
+              placeholder="0000 0000 0000 0000"
+            />
+          </div>
+          <div class="input-group">
+            <div class="input-field">
+              <label for="card-expiration">Expiration date:</label>
+              <input id="card-expiration" type="text" placeholder="MM/YY" />
+            </div>
+            <div class="input-field">
+              <label for="card-code">Security code:</label>
+              <input id="card-code" type="text" placeholder="CVV" />
+            </div>
+          </div>
+          <div class="finalize-container">
+            <button class="finalize-button" type="submit">
+              Finalize Payment
+            </button>
+            <label style="font-size: 10px;"
+              >By continuing, you accept our
+              <a href="#">Terms and Conditions</a></label
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenedor de Detalles de Compra -->
+      <div class="details-container">
+        <h2>Purchase Details</h2>
+        <div id="payment-details" class="payment-details"></div>
+      </div>
+    </div>
+    
