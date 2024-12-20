@@ -1,185 +1,202 @@
-// ============ El código a continuación es antes de la modificación de la verificación de fechas / Hora 11:25 ============
+// ============ CÓDIGO DESPUÉS DEL REWORK ============
 
-document.addEventListener("DOMContentLoaded", function () {
-  const searchBtn = document.getElementById("search-btn");
-  const resetBtn = document.getElementById("reset-btn");
+// =============================================== RESERVAS ===============================================
+
+// Esperamos que el DOM esté completamente cargado
+document.addEventListener("DOMContentLoaded", () => {
   const checkinInput = document.getElementById("checkin");
   const checkoutInput = document.getElementById("checkout");
+  const guestCountInput = document.getElementById("guest-count");
+  const searchBtn = document.getElementById("search-btn");
+  const resetBtn = document.getElementById("reset-btn");
 
-  const roomTypesSection = document.getElementById("room-types-section");
-  const availableRoomsSection = document.getElementById(
-    "available-rooms-section"
-  );
+  const decrementBtn = document.querySelector(".decrement");
+  const incrementBtn = document.querySelector(".increment");
 
-  const continueBtn = document.getElementById("select-continue"); // Botón de "Seleccionar y continuar"
+  const maxGuests = 10;
 
-  // Función para inicializar los eventos de los controles de cantidad
-  function initializeIncrementButtons() {
-    document.querySelectorAll(".increment-buttons").forEach((container) => {
-      const decrementBtn = container.querySelector(".decrement");
-      const incrementBtn = container.querySelector(".increment");
-      const countInput = container.querySelector(".room-count");
-
-      decrementBtn.addEventListener("click", () => {
-        let currentValue = parseInt(countInput.value, 10);
-        if (currentValue > 0) {
-          countInput.value = currentValue - 1;
-          checkSelection();
-        }
-      });
-
-      incrementBtn.addEventListener("click", () => {
-        let currentValue = parseInt(countInput.value, 10);
-        if (currentValue < 10) {
-          countInput.value = currentValue + 1;
-          checkSelection();
-        }
-      });
-    });
-  }
-
-  // Función para verificar si hay al menos una habitación seleccionada
-  function checkSelection() {
-    let isAnySelected = false;
-
-    document.querySelectorAll(".room-count").forEach((input) => {
-      if (parseInt(input.value, 10) > 0) {
-        isAnySelected = true;
-      }
-    });
-
-    // Activar o desactivar el botón "Seleccionar y continuar"
-    if (isAnySelected) {
-      continueBtn.disabled = false;
-      continueBtn.classList.add("enabled");
-    } else {
-      continueBtn.disabled = true;
-      continueBtn.classList.remove("enabled");
-    }
-  }
-
-  // Función para actualizar las habitaciones disponibles
-  function updateAvailableRooms() {
+  // Función para validar las fechas
+  function validateDates() {
     const checkinDate = new Date(checkinInput.value);
     const checkoutDate = new Date(checkoutInput.value);
+    const today = new Date();
 
-    // Ejemplo estático de habitaciones disponibles con información adicional
-    const availableRooms = [
-      {
-        type: "Habitación Individual",
-        beds: "1 cama individual",
-        guests: 1,
-        price: 100,
-      },
-      {
-        type: "Habitación Doble - 2 camas",
-        beds: "2 camas dobles grandes",
-        guests: 4,
-        price: 150,
-      },
-      {
-        type: "Suite",
-        beds: "1 cama king-size",
-        guests: 2,
-        price: 250,
-      },
-    ];
-
-    const tableBody = document.querySelector("#available-rooms-table tbody");
-    tableBody.innerHTML = ""; // Limpiar las habitaciones anteriores
-
-    availableRooms.forEach((room) => {
-      const row = document.createElement("tr");
-      row.innerHTML = `
-        <td>
-          ${room.type}<br />
-          <span>${room.beds}</span>
-        </td>
-        <td>👤 x${room.guests}</td>
-        <td class="price" data-price="${room.price}">$${room.price}</td>
-        <td>
-          <div class="increment-buttons">
-            <button type="button" class="decrement">-</button>
-            <input type="text" value="0" readonly class="room-count" />
-            <button type="button" class="increment">+</button>
-          </div>
-        </td>
-      `;
-      tableBody.appendChild(row);
-    });
-
-    // Inicializar los eventos de los controles dinámicos
-    initializeIncrementButtons();
-    checkSelection(); // Verificar selección inicial
+    // Validación de fechas
+    if (checkinDate < today) {
+      alert("La fecha de entrada no puede ser anterior a hoy.");
+      checkinInput.value = "";
+    } else if (checkoutDate <= checkinDate) {
+      alert("La fecha de salida debe ser posterior a la fecha de entrada.");
+      checkoutInput.value = "";
+    }
   }
 
-  // Mostrar habitaciones disponibles al hacer clic en "Buscar"
-  searchBtn.addEventListener("click", function () {
-    // Comprobar que las fechas sean válidas
-    if (!checkinInput.value || !checkoutInput.value) {
-      alert("Por favor, selecciona las fechas de entrada y salida.");
-      return;
+  // Función para habilitar/deshabilitar el botón de "Reservar"
+  function toggleReserveButton() {
+    const checkinDate = checkinInput.value;
+    const checkoutDate = checkoutInput.value;
+    const guestCount = parseInt(guestCountInput.value);
+
+    // Habilitar el botón si las fechas y la cantidad de personas son válidas
+    if (
+      checkinDate &&
+      checkoutDate &&
+      guestCount > 0 &&
+      guestCount <= maxGuests
+    ) {
+      searchBtn.disabled = false;
+    } else {
+      searchBtn.disabled = true;
     }
+  }
 
-    // Ocultar la sección de tipos de habitaciones y mostrar las habitaciones disponibles
-    roomTypesSection.style.display = "none";
-    availableRoomsSection.style.display = "block";
-    updateAvailableRooms();
-  });
+  // Función para incrementar o decrementar la cantidad de personas
+  function updateGuestCount(increment) {
+    let currentCount = parseInt(guestCountInput.value);
+    if (increment && currentCount < maxGuests) {
+      guestCountInput.value = currentCount + 1;
+    } else if (!increment && currentCount > 0) {
+      guestCountInput.value = currentCount - 1;
+    }
+    toggleReserveButton(); // Actualizar estado del botón de reserva
+  }
 
-  // Restablecer los campos y ocultar la sección de habitaciones disponibles
-  resetBtn.addEventListener("click", function () {
+  // Event listeners para los inputs de fechas
+  checkinInput.addEventListener("change", validateDates);
+  checkoutInput.addEventListener("change", validateDates);
+
+  // Event listeners para botones de incremento/decremento
+  incrementBtn.addEventListener("click", () => updateGuestCount(true));
+  decrementBtn.addEventListener("click", () => updateGuestCount(false));
+
+  // Event listener para el botón de "Restablecer"
+  resetBtn.addEventListener("click", () => {
     checkinInput.value = "";
     checkoutInput.value = "";
-
-    roomTypesSection.style.display = "block";
-    availableRoomsSection.style.display = "none";
+    guestCountInput.value = "0";
+    toggleReserveButton(); // Deshabilitar el botón de reserva
   });
 
-  // Guardar la selección y continuar
-  continueBtn.addEventListener("click", () => {
-    const selectedRooms = [];
+  // Inicialmente, deshabilitamos el botón de "Reservar"
+  toggleReserveButton();
+});
 
-    document
-      .querySelectorAll("#available-rooms-table tbody tr")
-      .forEach((row) => {
-        const roomType = row
-          .querySelector("td")
-          .childNodes[0].textContent.trim(); // Tipo de habitación
-        const price = row.querySelector(".price").dataset.price; // Precio extraído de data-price
-        const count = row.querySelector(".room-count").value; // Cantidad seleccionada
+// ====================================== RESERVAS / GUARDAR INFO ======================================
 
-        if (parseInt(count, 10) > 0) {
-          selectedRooms.push({
-            type: roomType,
-            price: parseFloat(price),
-            quantity: parseInt(count, 10),
-          });
-        }
-      });
+document.addEventListener("DOMContentLoaded", () => {
+  const pricePerNight = 100; // Precio por noche
+  const checkinInput = document.getElementById("checkin");
+  const checkoutInput = document.getElementById("checkout");
+  const guestCountInput = document.getElementById("guest-count");
+  const reserveButton = document.getElementById("search-btn");
 
-    // Guardar los datos en localStorage para transferirlos
-    localStorage.setItem("selectedRooms", JSON.stringify(selectedRooms));
+  function calculateReservation() {
+    const checkinDate = new Date(checkinInput.value);
+    const checkoutDate = new Date(checkoutInput.value);
+    const guestCount = parseInt(guestCountInput.value);
+    const nights = (checkoutDate - checkinDate) / (1000 * 60 * 60 * 24);
 
-    // Redirigir a la página de pagos
-    window.location.href = "Pagos.html";
-  });
+    if (nights > 0 && guestCount > 0) {
+      const totalCost = nights * pricePerNight;
+
+      // Crear un objeto con los datos de la reserva
+      const reservationDetails = {
+        pricePerNight,
+        checkinDate: checkinDate.toISOString().split("T")[0], // Formatear fecha
+        checkoutDate: checkoutDate.toISOString().split("T")[0],
+        nights,
+        guestCount,
+        totalCost,
+      };
+
+      // Guardar los datos en localStorage
+      localStorage.setItem(
+        "reservationDetails",
+        JSON.stringify(reservationDetails)
+      );
+
+      // Redirigir a la página de pagos
+      window.location.href = "pagosHoteles.html";
+    } else {
+      alert("Por favor, selecciona fechas y una cantidad de personas válidas.");
+    }
+  }
+
+  reserveButton.addEventListener("click", calculateReservation);
 });
 
 // =============================================== RESEÑAS ===============================================
 
 // Mostrar el formulario al hacer clic en "Dejar reseña"
-document
-  .getElementById("leave-review-btn")
-  .addEventListener("click", function () {
-    document.getElementById("review-form").style.display = "block"; // Muestra el formulario
-    this.style.display = "none"; // Oculta el botón "Dejar reseña"
-  });
+document.addEventListener("DOMContentLoaded", () => {
+  document
+    .getElementById("leave-review-btn")
+    .addEventListener("click", function () {
+      document.getElementById("review-form").style.display = "block"; // Muestra el formulario
+      this.style.display = "none"; // Oculta el botón "Dejar reseña"
+    });
 
-// Ocultar el formulario al hacer clic en "Cancelar"
-document
-  .getElementById("cancel-review-btn")
-  .addEventListener("click", function () {
-    document.getElementById("review-form").style.display = "none"; // Oculta el formulario
-    document.getElementById("leave-review-btn").style.display = "block"; // Muestra el botón "Dejar reseña"
+  // Ocultar el formulario al hacer clic en "Cancelar"
+  document
+    .getElementById("cancel-review-btn")
+    .addEventListener("click", function () {
+      document.getElementById("review-form").style.display = "none"; // Oculta el formulario
+      document.getElementById("leave-review-btn").style.display = "block"; // Muestra el botón "Dejar reseña"
+    });
+});
+
+// ================================== VALIDACIÓN DEL BOTÓN ENVIAR RESEÑA ==================================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const reviewTextInput = document.getElementById("review-text");
+  const reviewRatingInput = document.getElementById("review-rating");
+  const submitReviewButton = document.getElementById("submit-review-btn");
+
+  // Función para habilitar/deshabilitar el botón
+  function toggleSubmitReviewButton() {
+    const reviewText = reviewTextInput.value.trim();
+    const reviewRating = reviewRatingInput.value;
+
+    if (reviewText !== "" && reviewRating !== "") {
+      submitReviewButton.disabled = false; // Habilitar botón
+    } else {
+      submitReviewButton.disabled = true; // Deshabilitar botón
+    }
+  }
+
+  // Event listeners para los inputs
+  reviewTextInput.addEventListener("input", toggleSubmitReviewButton);
+  reviewRatingInput.addEventListener("change", toggleSubmitReviewButton);
+
+  // Inicialmente deshabilitamos el botón
+  toggleSubmitReviewButton();
+
+  // Manejo del envío de la reseña
+  submitReviewButton.addEventListener("click", () => {
+    const reviewText = reviewTextInput.value.trim();
+    const reviewRating = reviewRatingInput.value;
+
+    if (reviewText && reviewRating) {
+      // Mostrar la reseña como confirmación (puedes cambiar esto por lógica de servidor o similar)
+      alert(
+        `¡Gracias por tu reseña!\n\nReseña: ${reviewText}\nCalificación: ${reviewRating} estrellas`
+      );
+
+      // Limpiar los campos después del envío
+      reviewTextInput.value = "";
+      reviewRatingInput.value = "";
+      toggleSubmitReviewButton(); // Deshabilitar botón de nuevo
+    } else {
+      // Validación de seguridad (este caso no debería ocurrir si los controles funcionan correctamente)
+      alert(
+        "Por favor, escribe una reseña y selecciona una calificación antes de enviarla."
+      );
+    }
+
+// ============================== Opcional: Agregar la reseña a la lista de reseñas ==========================
+    const reviewsList = document.querySelector(".reviews-list");
+    const newReview = document.createElement("p");
+    newReview.innerHTML = `<strong>Tu reseña:</strong> ${reviewText} <span>★${reviewRating}</span>`;
+    reviewsList.appendChild(newReview);
   });
+});

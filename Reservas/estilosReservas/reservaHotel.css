@@ -1,4 +1,5 @@
-/* ============ El código a continuación es antes de la modificación de la verificación de fechas / Hora ============ */
+/* ============ CÓDIGO DEPUÉS DEL REWORK ============ */
+
 
 /* General Styles */
 body {
@@ -6,9 +7,10 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.6;
+  background-color: #ADD0C7;
 }
 
-/* -------------------------- Barra de navegación -------------------------- */
+/* ======================================== Barra de navegación ======================================== */
 
 /* Barra de navegación principal */
 .barranaranja {
@@ -93,35 +95,7 @@ body {
   height: 20px;
 }
 
-/* Filtro
-.filter {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.filter label {
-  color: white;
-  font-size: 14px;
-  margin-right: 5px;
-}
-
-.filter select {
-  border: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  background-color: white;
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-}
-
-.filter select:hover {
-  background-color: #ffe4c4;
-}
-*/
-
-/* -------------------------- Header -------------------------- */
+/* ====================================== Header ====================================== */
 .header {
   text-align: left;
   padding: 20px;
@@ -150,8 +124,6 @@ body {
 }
 
 /* Secciones generales */
-
-/*antes margin estaba en 20 y max width en 900*/
 .service-info,
 #room-types-section,
 #date-selector,
@@ -165,14 +137,12 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Para un efecto visual más limpio */
 }
 
-
 .service-info ul {
   list-style: none;
   padding: 0;
 }
 
-/* ============================== Estilos para selector de de fechas ============================== */
-
+/* ============================== Estilos para selector de fechas ============================== */
 #date-selector {
   background-color: #f8f8f8;
   padding: 20px;
@@ -184,172 +154,44 @@ body {
 
 #date-selector h2 {
   margin-bottom: 20px;
-}
-
-#date-selector label {
-  margin: 10px 0 5px;
-}
-
-#date-selector input {
-  padding: 8px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-#date-selector button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  margin-right: 10px;
-}
-
-.search-btn {
-  margin-left: 200px;
-  background-color: #3b8938;
-  color: white;
-}
-
-.reset-btn {
-  background-color: #DC3545;
-  color: white;
-}
-
-#date-selector button:hover {
-  opacity: 0.9;
-}
-
-
-/* ============================== Estilos para Los tipos de habitaciones ============================== */
-
-#room-types-section {
-  margin: 15px auto;
-  padding: 20px;
-  max-width: 1000px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#room-types-section h2 {
   text-align: center;
-  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
+.date-form {
+  display: grid;
+  gap: 20px;
 }
 
-thead th {
-  background-color: #f8a06a;
-  color: white;
-  padding: 10px;
-  text-align: left;
+.date-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-group label {
   font-weight: bold;
+  color: #333;
 }
 
-tbody td {
+.date-group input {
   padding: 10px;
-  border: 1px solid #ddd;
-  vertical-align: top;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #f4f4f4;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #fff;
-}
-
-tbody td span {
-  display: block;
-  color: gray;
-  font-size: 0.9rem;
-}
-
-select {
-  padding: 5px;
+  margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background: white;
+  font-size: 16px;
 }
 
-select:focus {
-  outline: none;
-  border-color: #3b8938;
+.guest-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
 }
-
-/* ============================== Estilos para selección de habitaciones ============================== */
-
-#available-rooms-section {
-  margin: 15px auto;
-  padding: 20px;
-  max-width: 1000px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-#available-rooms-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-thead th {
-  background-color: #f8a06a;
-  color: white;
-  padding: 10px;
-  text-align: left;
-  font-weight: bold;
-}
-
-tbody td {
-  padding: 10px;
-  border: 1px solid #ddd;
-  vertical-align: top;
-}
-
-tbody tr:nth-child(odd) {
-  background-color: #f4f4f4;
-}
-
-tbody tr:nth-child(even) {
-  background-color: #fff;
-}
-
-tbody td span {
-  display: block;
-  color: gray;
-  font-size: 0.9rem;
-}
-
-select {
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: white;
-}
-
-select:focus {
-  outline: none;
-  border-color: #3b8938;
-}
-
-/* Botones de Incrementación */
 
 .increment-buttons {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 5px;
 }
 
@@ -357,8 +199,8 @@ select:focus {
   background-color: #f8a06a;
   color: white;
   border: none;
-  padding: 5px 10px;
-  font-size: 16px;
+  padding: 10px 15px;
+  font-size: 18px;
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
@@ -369,44 +211,83 @@ select:focus {
 }
 
 .increment-buttons input {
-  width: 30px;
+  width: 50px;
   text-align: center;
+  font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 5px;
-  font-size: 16px;
+  background-color: #fff;
   outline: none;
 }
 
-/* Seleccionar y continuar */
-
-.continue-container {
-  text-align: center;
-  margin-top: 20px;
+.button-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
 }
 
-#select-continue {
-  background-color: #5e5e5e;
+.search-btn, .reset-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-btn {
+  background-color: #119E7B;
+  color: white;
+}
+
+.reset-btn {
+  background-color: #DC3545;
+  color: white;
+}
+
+.search-btn:hover {
+  background-color: #6fa396;
+  ;
+}
+
+.reset-btn:hover {
+  background-color: #e04a42;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 5px;
+  display: block;
+}
+
+
+/* Botón habilitado (estilo actual) */
+.search-btn {
+  background-color: #119E7B;
   color: white;
   border: none;
   padding: 10px 20px;
-  font-size: 16px;
-  cursor: not-allowed;
-  border-radius: 5px;
-  transition: background-color 0.3s, cursor 0.3s;
-}
-
-#select-continue.enabled {
   cursor: pointer;
-  background-color: #3b8938;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 }
 
-#select-continue.enabled:hover {
-  background-color: #558f54;
+/* Botón deshabilitado */
+.search-btn:disabled {
+  background-color: #cccccc; /* Gris */
+  color: #666666;
+  cursor: not-allowed;
 }
 
+.search-btn {
+  transition: background-color 0.3s ease;
+}
 
-/* Reviews */
+/* =============================================== Reseñas =============================================== */
 
 .reviews-section {
   margin: 15px auto;
@@ -434,7 +315,7 @@ select:focus {
   display: block;
   margin: 0 auto 20px;
   padding: 10px 15px;
-  background-color: #3b8938;
+  background-color: #e78a50;
   color: white;
   border: none;
   border-radius: 5px;
@@ -443,7 +324,7 @@ select:focus {
 }
 
 #leave-review-btn:hover {
-  background-color: #558f54;
+  background-color: #f8a06a;
 }
 
 #review-form {
@@ -474,7 +355,7 @@ select:focus {
 
 #submit-review-btn {
   padding: 10px 15px;
-  background-color: #3b8938;
+  background-color: #119E7B;
   color: white;
   border: none;
   border-radius: 5px;
@@ -482,7 +363,7 @@ select:focus {
 }
 
 #submit-review-btn:hover {
-  background-color: #558f54;
+  background-color: #6fa396;
 }
 
 .cancel-btn {
@@ -495,6 +376,29 @@ select:focus {
   margin-left: 10px;
 }
 
-.cancel-btn:hover {
-  background-color: #e36f7a;
+.reviews-list p {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* Botón habilitado */
+button#submit-review-btn {
+  background-color: #119E7B; /* Verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón deshabilitado */
+button#submit-review-btn:disabled {
+  background-color: #cccccc; /* Gris */
+  color: #666666;
+  cursor: not-allowed;
 }
