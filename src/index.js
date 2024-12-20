@@ -26,13 +26,17 @@ app.use(methodOverride('_method'));
 app.use(session({
     secret:'mysecretapp',
     resave: true,
-    saveUninitialized: true}));
+    saveUninitialized: true
+}));
 
 
 //Global Variables
 
 
 //Routes
+app.use(require('./routes/index'));
+app.use(require('./routes/users'));
+app.use(require('./routes/interactions'));
 
 
 

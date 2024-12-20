@@ -1,0 +1,590 @@
+.navbar-custom{
+    background-color: #FC9D64;
+}
+.navbar-custom 
+.navbar-brand,
+.navbar-custom 
+.navbar-nav 
+.nav-link {
+    color: #ffffff; /* Replace with your desired text color */
+}
+
+.navbar-custom 
+.navbar-toggler-icon {
+    background-color: #ffffff; /* Replace with your desired color for the toggler icon */
+}
+
+.navbar-custom 
+.navbar-toggler {
+border-color: #ffffff; /* Replace with your desired border color for the toggler button */
+}
+.imghead {
+    height: 300px;
+    width: 100%;
+  }
+  .barranaranja {
+    height: 50px;
+    background-color:  #FC9D64;
+  }
+
+  .card {
+
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 16px; /* Rounded edges */
+    overflow: hidden;
+    margin: 20px;
+    max-width: 100%; /* Almost full width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    background-color: white; /* Card background */
+  }
+  .card img {
+    width: 150px; /* Adjust the width as needed */
+    height: auto;
+  }
+  .card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .card-title {
+    font-size: 1.5em;
+    margin: 0;
+    color: #333; /* Darker color for title */
+  }
+  .card-description {
+    margin: 8px 0;
+    color: #555;
+  }
+
+  .card-price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+background-color:  #FC9D64;
+color: white;
+padding: 10px 20px;
+}
+
+.logo a {
+text-decoration: none;
+font-size: 24px;
+color: white;
+}
+
+.nav-links {
+list-style: none;
+display: flex;
+gap: 20px;
+margin: 0;
+padding: 0;
+}
+
+.nav-links a {
+text-decoration: none;
+color: white;
+font-size: 16px;
+}
+
+.nav-links a:hover {
+text-decoration: underline;
+}
+
+.search-bar {
+display: flex;
+align-items: center;
+background: white;
+padding: 5px;
+border-radius: 5px;
+}
+
+.search-bar input {
+border: none;
+padding: 5px;
+outline: none;
+color: black;
+background: transparent;
+font-size: 14px;
+width: 200px;
+}
+
+.search-bar input::placeholder {
+color: #bbb;
+}
+
+.search-bar button {
+background: none;
+border: none;
+color: white;
+font-size: 18px;
+cursor: pointer;
+}
+
+.search-bar button:hover {
+color: #ccc;
+}
+
+select {
+appearance: none; /* Remove default browser styles */
+-webkit-appearance: none; /* For Safari */
+-moz-appearance: none; /* For Firefox */
+background-color: white;
+color: black;
+border: 1px solid #555;
+border-radius: 5px;
+padding: 10px;
+font-size: 14px;
+cursor: pointer;
+outline: none;
+transition: all 0.3s ease;
+width: 150px; /* Adjust width as needed */
+}
+
+select:hover {
+background-color: #f1f1f1;
+border-color: #666;
+}
+
+select:focus {
+border-color: #007BFF; /* Highlight color for focus */
+box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+}
+
+select option {
+background-color: #333;
+color: white;
+}
+
+/* Optional: Add a down arrow for custom appearance */
+select::after {
+content: "▼"; /* Down arrow */
+position: absolute;
+right: 10px;
+pointer-events: none; /* Make the arrow unclickable */
+}
+
+.card-button {
+display: flex;
+align-items: center;
+padding-left: 700px;
+}
+
+.card-button button {
+background-color: #007BFF;
+color: white;
+border: none;
+border-radius: 5px;
+padding: 10px 20px;
+font-size: 14px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.card-button button:hover {
+background-color: #0056b3;
+}
+
+
+/* index css */
+
+.imgIndex {
+  width: 100%;
+  height: 400px;
+}
+
+.containerIndex {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centeredIndex {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 25px;
+}
+
+.bodyIndex {
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.barraMenuIndex {
+  background-color:  #FC9D64;
+  border-radius: 5px;
+  padding: 5px;
+  display: flex;
+}
+
+
+.imagenMenuIndex {
+  width: 40px;
+  height: 40px;
+}
+
+.imagenMenuDivIndex {
+  max-width: 50px;
+  margin-left: 5%;
+}
+
+.LoginLinkIndex{
+  color: #ADD0C7;
+  padding-left: 20px;
+  padding-top: 10px;
+  display: flex;
+  justify-content: right;
+  
+}
+
+.ServiciosIndex {
+  background-color: #fc9e6490;
+  padding: 5px;
+  border-radius: 5%;
+  display: flex;
+}
+
+.ServiciosIndex img{
+  border-radius: 10px;
+}
+
+.DiosIndex {
+  display: flex;
+  padding-top: 20px;
+}
+
+
+/* registrar un usuario */
+
+.body{
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.socialMedia{
+  width:40px;
+  margin:0 5px;
+  border-radius: 50%;
+  height: 40px;
+}
+
+.button {
+  padding: 7px 10px;
+  background-color:cadetblue;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+button{
+  padding: 7px 10px;
+  background-color:#119E7B;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover{
+  background-color: #007D5E;
+  color: white;
+}
+
+.legaltext{
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+
+
+.login-container{
+  background-color: #ADD0C7;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 350px;
+  text-align: left;
+}
+
+.main{  
+  background-color: #FC9D64;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;   
+  max-width: 430px;
+  text-align: center;
+}
+
+h1{
+color: white;
+margin-bottom: 20px;
+}
+
+.input{
+margin-bottom: 15px;
+}
+
+.input label{
+  display: block;
+  font-size:14px;
+  margin-bottom: 5px;
+}
+
+.input input{
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.checkbox-container{
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.checkbox-container input{
+  margin-right:10px; 
+  cursor: pointer;
+}
+
+.checkbox-container label{
+  font-size: 10px;
+}
+
+.social-media-icons{
+  margin-top: 10px;
+}
+
+.buttons{
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+
+/* Pagos CSS */
+
+.bodyPagos{
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.mainPagos{  
+  background-color: #FC9D64;
+  padding: 65px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;   
+  max-width: 490px;
+  text-align: center;
+}
+
+.details-container{
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  max-height: 568px;
+  text-align: left;
+}
+
+
+.mainPagos, .details-container {
+  margin-right: 0px; /* Ajustar espacio entre elementos*/
+}
+
+.checkout-container{
+  background-color: #ADD0C7;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+
+
+.paymentMethods{
+  width:40px;
+  margin:0 5px;
+  border-radius: 50%;
+}
+
+.payment-methods-icons{
+  margin-top: 10px;
+}
+
+.buttonPagos{
+  padding: 7px 10px;
+  background-color:white;
+  text-decoration: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttonPagos:hover{
+  background-color: cadetblue;
+  color: white;
+}
+
+.h1Pagos{
+color: black;
+}
+
+.inputDiv{
+margin-bottom: 15px;
+}
+
+.inputDiv label{
+  display: block;
+  font-size:14px;
+  margin-bottom: 5px;
+}
+
+.inputDiv input{
+  width: 90.5%;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.input2{
+margin-bottom: 15px;
+}
+
+.input2 label{
+  display:block;
+  font-size:14px;
+  margin-bottom: 5px;
+}
+
+.input2 input{
+  width: 85%;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.finalize-container{
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.finalize-container input{
+  margin-right:10px; 
+  cursor: pointer;
+}
+
+.finalize-container label{
+  font-size: 12px;
+}
+
+.details-container{
+  background-color: #ADD0C7;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+/* TABLES */
+
+.tablePagos {
+  background-color: #ADD0C7;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-weight: bolder;
+  font-size: smaller;
+}
+
+.tablePagos .tdPagos {
+  background-color: #ADD0C7;
+  height: 30px;
+  font-weight: 100;
+}
+
+.tablePagos .tbodyPagos .trPagos .tdPagos:first-child {
+  background-color: #ADD0C7;
+  text-align: left;
+}
+
+.tituloIndex{
+  color: black;
+  font-family: Italic;
+  font-size: 100px;
+  margin-left: 40px;
+}
+
+.logoIndex{
+  font-size: 20px;
+  font-family:'Times New Roman', Times, serif;
+  
+}
+.card-body{
+    background-color: #FC9D64;
+ 
+}
+.container {
+    margin: 2rem auto;
+    max-width: 800px;
+    padding: 1rem;
+}
+form {
+    margin-bottom: 2rem;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+}
+.btn {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+}
+.btn-add {
+    background-color: #28a745;
+    color: white;
+}
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
+}
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}

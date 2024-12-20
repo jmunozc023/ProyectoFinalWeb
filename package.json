@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon /src/index.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
     "moongoose": "^0.0.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
+    "path": "^0.12.7",
     "proyectofinalweb": "file:"
   }
 }
