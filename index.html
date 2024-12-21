@@ -1,120 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Puntarenas</title>
     <style>
-      img {
-        width: 100%;
-        height: 400px;
-      }
+        body {
+            background-color: white;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-      div.container {
-        position: relative;
-        text-align: center;
-        color: white;
-      }
+        .barraMenu {
+            background-color: #FC9D64;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-      div.centered {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 25px;
-      }
+        .barraMenu .logo {
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+        }
 
-      body {
-        background-color: white;
-        font-family: Arial, Helvetica, sans-serif;
-      }
+        .barraMenu .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
 
-      h1 {
-        color: black;
-      }
+        .barraMenu .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+        }
 
-      .barraMenu {
-        background-color:  #FC9D64;
-        border-radius: 5px;
-        padding: 5px;
-        display: flex;
-      }
+        .barraMenu .nav-links a:hover {
+            text-decoration: underline;
+        }
 
-      .textoMenu {
-        color: white;
-      }
+        .barraMenu .login-links {
+            display: flex;
+            gap: 10px;
+        }
 
-      .imagenMenu {
-        width: 40px;
-        height: 40px;
-      }
+        .barraMenu .login-links a {
+            color: #ADD0C7;
+            text-decoration: none;
+        }
 
-      .imagenMenuDiv {
-        max-width: 50px;
-      }
+        .container {
+            position: relative;
+            text-align: center;
+            color: white;
+        }
 
-      .LoginLink {
-        color: #ADD0C7;
-        padding-left: 20px;
-        padding-top: 10px;
-        text-align: right;
-      }
+        .container img {
+            width: 100%;
+            height: 400px;
+        }
 
-      .Servicios {
-        background-color: #fc9e6490;
-        padding: 5px;
-        border-radius: 5%;
-        max-width: 90%;
-        height: 300px;
-      }
+        .container .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 25px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
 
-      .Dios {
-        display: flex;
-        padding-top: 20px;
-      }
+        .welcome-section {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .welcome-section h1 {
+            color: #FC9D64;
+        }
+
+        .welcome-section p {
+            color: #555;
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .service {
+            background-color: #fc9e6490;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 45%;
+            text-align: center;
+        }
+
+        .service h2 {
+            color: #FC9D64;
+        }
+
+        .service p {
+            color: #555;
+        }
+
+        .service a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #FC9D64;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .service a:hover {
+            background-color: #e88b50;
+        }
+
+        .footer {
+            background-color: #FC9D64;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            margin-top: 40px; /* Añadir margen superior */
+            position: relative; /* Cambiar posición a relativa */
+        }
+
+        .footer a {
+            color: #ADD0C7;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="barraMenu">
-      <div class="imagenMenuDiv">
-        <img class="imagenMenu" src="Imagenes/User.png" alt="foto de usuario" />
-      </div>
-
-      <div class="LoginLink">
-        <a href="login.html">Login |</a>
-        <a href="register.html">Create User</a>
-      </div>
+        <div class="logo">Puntarenas</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Destinos.html">Destinos</a></li>
+            <li><a href="Reservaciones.html">Reservas</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="login-links">
+            <a href="login.html">Login</a>
+            <a href="register.html">Create User</a>
+        </div>
     </div>
+
     <div class="container">
-      <img src="Imagenes/puntarenas.jpg" alt="puntarenas" />
-      <div class="centered">Discover Puntarenas</div>
+        <img src="Imagenes/puntarenas.jpg" alt="puntarenas">
+        <div class="centered">Discover Puntarenas</div>
     </div>
 
-    <div class="Dios">
-      <div class="ServiciosPadreIzq">
-        <div class="Servicios">
-          <h2>Busqueda de Destinos</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem
-            explicabo deserunt dignissimos possimus et, culpa ullam iste unde
-            facilis doloribus blanditiis maiores ipsam magni nihil a aspernatur,
-            totam accusantium. Placeat?
-          </p>
-          <a style="padding-left: 39%" href="Destinos.html">Go now!</a>
-        </div>
-      </div>
-      <div class="ServiciosPadreDer">
-        <div class="Servicios">
-          <h2>Reservas y reseñas</h2>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit,
-            hic totam odit repellendus suscipit odio officia iusto optio
-            voluptate a reiciendis velit non praesentium, magnam amet doloribus
-            nostrum minus exercitationem.
-          </p>
-          <a style="padding-left: 39%" href="Reservaciones.html">Go now!</a>
-        </div>
-      </div>
+    <div class="welcome-section">
+        <h1>Welcome to Puntarenas</h1>
+        <p>Explore the beauty of Puntarenas, discover amazing destinations, and make unforgettable memories. Whether you're looking for adventure or relaxation, Puntarenas has something for everyone.</p>
     </div>
-  </body>
+
+    <div class="services">
+        <div class="service">
+            <h2>Busqueda de Destinos</h2>
+            <p>Descubre los mejores destinos turísticos en Puntarenas. Encuentra lugares increíbles para visitar y disfruta de experiencias únicas.</p>
+            <a href="Destinos.html">Go now!</a>
+        </div>
+        <div class="service">
+            <h2>Reservas y reseñas</h2>
+            <p>Reserva tu alojamiento y actividades en Puntarenas. Lee reseñas de otros viajeros y comparte tus propias experiencias.</p>
+            <a href="Reservaciones.html">Go now!</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2023 Puntarenas. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+    </div>
+</body>
 </html>
