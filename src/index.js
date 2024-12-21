@@ -62,6 +62,7 @@ app.use(require('./routes/users'));
 app.use(require('./routes/interactions'));
 app.use(require('./routes/destinos'));
 app.use(require('./routes/itinerarios'));
+app.use(require('./routes/resenas'));
 
 
 //Static Files

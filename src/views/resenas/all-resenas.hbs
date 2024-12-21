@@ -1,0 +1,36 @@
+<div class="row">
+    {{#each resenas}}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title d-flex justify-content-between align-items-center">
+                    Destino: {{#with (lookup ../destinos destino_id)}}{{title}}{{/with}}
+                    </h4>
+                    <p>
+                        Calificacion: {{rating}}
+                    </p>
+                    <p>
+                        Comentario: {{review}}
+                    </p>
+                    <div class="d-flex mx-2 my-2">
+                        <form action="/resenas/delete/{{_id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                        <form action="/resenas/edit/{{_id}}" method="GET">
+                            <input type="hidden" name="_method" value="GET">
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead">No hay reseñas para mostrar</p>
+                <a href="/resenas/add" class="btn btn-success btn-block">Create One!</a>
+            </div>
+        </div>
+    {{/each}}
+</div>

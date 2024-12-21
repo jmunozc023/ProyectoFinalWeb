@@ -1,0 +1,26 @@
+<div class="col-md-8 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Edicion de reseña</h3>
+        </div>
+        <div class="card-body">
+            <form action="/resenas/edit-resenas/{{resena._id}}?_method=PUT" method="POST">
+                <div class="mb-3">
+                    <label for="destino" class="form-label">Destino:</label>
+                    <input type="text" class="form-control" name="destino" value="{{resena.destino}}">
+                </div>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Calificacion:</label>
+                    <input type="text" class="form-control" name="rating" value="{{resena.rating}}">
+                </div>
+                <div class="mb-3">
+                    <label for="review" class="form-label">Comentario:</label>
+                    <input type="text" class="form-control" name="review" value="{{resena.review}}">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary btn-block">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

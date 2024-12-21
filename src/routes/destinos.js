@@ -65,35 +65,7 @@ router.delete('/destinos/delete/:id', isAuthenticated, async (req, res) => {
     req.flash('success_msg', 'Destino eliminado correctamente.');
     res.redirect('/destinos');
 });
-router.post('/destinos/:id/resena', isAuthenticated, async (req, res) => {
-    const { rating, comment } = req.body;
-    const errors = [];
-    if (!rating || rating <= 0) {
-        errors.push({ text: 'Por favor inserte una calificación.' });
-    }
-    if (!comment || comment.length <= 0) {
-        errors.push({ text: 'Por favor inserte un comentario.' });
-    }
-    if (errors.length > 0) {
-        const destino = await Destino.findById(req.params.id).lean();
-        res.render('destinos/edit-destino', { errors, destino });
-    } else {
-        const newReview = new Review({ destino: req.params.id, rating, comment, user: req.user.id });
-        await newReview.save();
-        req.flash('success_msg', 'Reseña agregada correctamente.');
-        res.redirect(`/destinos/${req.params.id}`);
-    }
-});
 
-router.get('/destinos/:id/resena', async (req, res) => {
-    try {
-        const reviews = await Review.find({ destino: req.params.id }).lean().sort({ date: 'desc' });
-        res.render('destinos/resena', { reviews });
-    } catch (err) {
-        console.error(err);
-        res.status(500).send('Server Error');
-    }
-});
 
 module.exports = router;
 
