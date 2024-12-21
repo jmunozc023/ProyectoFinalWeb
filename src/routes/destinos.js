@@ -41,6 +41,16 @@ router.get('/destinos', async (req, res) => {
         res.status(500).send('Server Error');
     }
 });
+router.get('/destinos/edit/:id', isAuthenticated, async (req, res) => {
+    try{
+        const destino = await Destino.findById(req.params.id).lean();
+        res.render('destinos/edit-destino', {destino});
+    }catch (err){ 
+        console.error(err);
+        res.status(500).send('Server Error');
+    }
+});
+
 router.put('/destinos/edit-destino/:id', isAuthenticated, async (req, res) => {
     const {title, description, price, location} = req.body;
     await Destino.findByIdAndUpdate(req.params.id, {title, description, price, location});
