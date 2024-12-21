@@ -47,6 +47,7 @@ app.use((req, res, next) => {
 app.use(require('./routes/index'));
 app.use(require('./routes/users'));
 app.use(require('./routes/interactions'));
+app.use(require('./routes/destinos'));
 
 
 
