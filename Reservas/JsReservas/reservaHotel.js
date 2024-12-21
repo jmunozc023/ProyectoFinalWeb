@@ -84,7 +84,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // ====================================== RESERVAS / GUARDAR INFO ======================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  const pricePerNight = 100; // Precio por noche
+  const priceElement = document.getElementById("price");
+  const pricePerNight = parseFloat(priceElement.textContent.trim()) || 0;
   const checkinInput = document.getElementById("checkin");
   const checkoutInput = document.getElementById("checkout");
   const guestCountInput = document.getElementById("guest-count");
