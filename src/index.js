@@ -19,7 +19,19 @@ app.engine('.hbs', exphbs.engine({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: {
+        formatDate: function (date) {
+            return new Date(date).toLocaleDateString();
+        },
+        ifChecked: function (destinoId, destinos) {
+            return destinos.some(destino => destino.destino.toString() === destinoId.toString()) ? 'checked' : '';
+        },
+        getVisitDate: function (destinoId, destinos) {
+            const destino = destinos.find(destino => destino.destino.toString() === destinoId.toString());
+            return destino ? new Date(destino.visitDate).toISOString().split('T')[0] : '';
+        }
+    }
 }));
 app.set('view engine', '.hbs');
 //Middlewares
@@ -49,7 +61,7 @@ app.use(require('./routes/index'));
 app.use(require('./routes/users'));
 app.use(require('./routes/interactions'));
 app.use(require('./routes/destinos'));
-
+app.use(require('./routes/itinerarios'));
 
 
 //Static Files
