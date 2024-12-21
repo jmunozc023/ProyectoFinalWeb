@@ -1,0 +1,23 @@
+<h1>Crear Nuevo Itinerario</h1>
+<form action="/itinerarios/new-itinerario" method="POST">
+    <div class="form-group">
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea name="description" id="description" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="destinos">Destinos:</label>
+        {{#each destinos}}
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="destinos[{{@index}}][destino]" value="{{this._id}}">
+                <label class="form-check-label">{{this.title}}</label>
+                <input type="date" class="form-control" name="destinos[{{@index}}][visitDate]">
+            </div>
+        {{/each}}
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Itinerario</button>
+</form>
+

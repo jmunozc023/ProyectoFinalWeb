@@ -1,0 +1,42 @@
+<h1>Todos los Itinerarios</h1>
+<div class="mb-3">
+    <a href="/itinerarios/add" class="btn btn-success">Crear Nuevo Itinerario</a>
+</div>
+<div class="row">
+    {{#each itinerarios}}
+        <div class="col-md-12">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4 class="card-title d-flex justify-content-between align-items-center">
+                        {{title}}
+                    </h4>
+                    <p>
+                        Descripción: {{description}}
+                    </p>
+                    <ul>
+                        {{#each destinos}}
+                            <li>{{this.destino.title}} - {{formatDate this.visitDate}}</li>
+                        {{/each}}
+                    </ul>
+                    <div class="d-flex mx-2 my-2">
+                        <form action="/itinerarios/delete/{{_id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger btn-sm" type="submit">Eliminar</button>
+                        </form>
+                        <form action="/itinerarios/edit/{{_id}}" method="GET">
+                            <input type="hidden" name="_method" value="GET">
+                            <button class="btn btn-warning btn-sm">Editar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead">No hay itinerarios para mostrar</p>
+                <a href="/itinerarios/add" class="btn btn-success btn-block">Crear Uno!</a>
+            </div>
+        </div>
+    {{/each}}
+</div>
