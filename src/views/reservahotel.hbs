@@ -1,0 +1,124 @@
+  <body class="body7">
+    <!-- Encabezado del servicio -->
+    <header class="header7">
+      <h1 class="hotel-name7">Hotel Nombre</h1>
+    </header>
+
+    <!-- Galería de imágenes del hotel -->
+    <section class="image-gallery7" id="image-gallery7">
+      <img src="hotel1.jpg" alt="Habitación del hotel" />
+      <img src="hotel2.jpg" alt="Lobby del hotel" />
+      <img src="hotel3.jpg" alt="Restaurante del hotel" />
+    </section>
+
+    <main class="main-content7">
+      <!-- Información del servicio -->
+      <section class="service-info7">
+        <h2>Descripción</h2>
+        <p id="hotel-description7">Descripción del hotel</p>
+        <ul class="ul7">
+          <li id="hotel-price7">
+            Precio por noche: $<span id="price7" class="price7">100</span>
+          </li>
+          <li id="hotel-location7">Ubicación: Desconocida</li>
+          <li id="hotel-services7">Servicios: Ninguno</li>
+        </ul>
+      </section>
+
+      <!-- ================================ Reservas ================================ -->
+
+      <section id="date-selector7">
+        <h2>Reserve aquí:</h2>
+        <div class="date-form7">
+          <div class="date-group7">
+            <label for="checkin7">Fecha de entrada</label>
+            <input
+              type="date"
+              id="checkin7"
+              name="checkin7"
+              aria-describedby="checkin-error7"
+              required
+            />
+          </div>
+
+          <div class="date-group7">
+            <label for="checkout7">Fecha de salida</label>
+            <input
+              type="date"
+              id="checkout7"
+              name="checkout7"
+              aria-describedby="checkout-error7"
+              required
+            />
+          </div>
+
+          <div class="guest-selector7">
+            <label for="guest-count7" style="font-weight: bold; color: #313131"
+              >Cantidad de personas:</label
+            >
+            <div class="increment-buttons7">
+              <button type="button" class="decrement7">-</button>
+              <input
+                type="text"
+                id="guest-count7"
+                value="0"
+                readonly
+                class="room-count7"
+              />
+              <button type="button" class="increment7">+</button>
+            </div>
+          </div>
+
+          <div class="button-group7">
+            <button type="button" id="search-btn7" class="search-btn7" disabled>
+              Reservar
+            </button>
+            <button type="button" id="reset-btn7" class="reset-btn7">
+              Restablecer
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================== Reseñas ====================================== -->
+
+      <!-- Reseñas y calificaciones -->
+      <section class="reviews-section7">
+        <h2>Reseñas</h2>
+        <!-- Listado de reseñas existentes -->
+        <div class="reviews-list7">
+          <p>
+            <strong>Usuario 1:</strong>
+            <br /><span style="margin-left: 30px">Comentario</span> <br /><span
+              style="margin-left: 30px"
+              >Calificación: 5</span
+            ><span>★</span>
+          </p>
+        </div>
+
+        <!-- Botón para habilitar la sección de dejar reseña -->
+        <button id="leave-review-btn7">Dejar reseña</button>
+
+        <!-- Formulario de reseñas oculto por defecto -->
+        <div id="review-form7" style="display: none">
+          <label for="review-text7">Dejar una reseña:</label>
+          <textarea
+            id="review-text7"
+            rows="3"
+            placeholder="Escribe tu reseña aquí"
+          ></textarea>
+          <label for="review-rating7">Calificación:</label>
+          <select id="review-rating7">
+            <option value="">☆☆☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button id="submit-review-btn7" disabled>Enviar reseña</button>
+          <button id="cancel-review-btn7" class="cancel-btn7">Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </body>

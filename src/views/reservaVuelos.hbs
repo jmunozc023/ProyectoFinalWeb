@@ -1,0 +1,110 @@
+  <body class="body-rv">
+    <!-- Encabezado del servicio -->
+    <header class="header-rv">
+      <h1 id="hotel-name-rv" style="color: azure;">Nombre de la Aerolínea</h1>
+    </header>
+
+    <!-- Galería de imágenes del hotel -->
+    <section class="image-gallery-rv" id="image-gallery-rv">
+      <img src="img.jpg" alt="Imágen Aerolínea" />
+      <img src="img.jpg" alt="Imágen Aerolínea" />
+      <img src="img.jpg" alt="Imágen Aerolínea" />
+    </section>
+
+    <main class="main-content-rv">
+      <!-- Información del servicio -->
+      <section class="service-info-rv">
+        <h2>Descripción</h2>
+        <p id="hotel-description-rv">Descripción de la aerolínea</p>
+        <ul>
+          <li id="hotel-price-rv">Precio por boleto: $<span id="price-rv" class="price-rv">100</span></li>
+          <li id="hotel-services-rv">Servicios: Ninguno</li>
+        </ul>
+      </section>
+
+      <!-- ================================ Reservas ================================ -->
+
+      <section id="date-selector-rv">
+        <h2>Fecha y Cantidad de Boletos:</h2>
+        <div class="date-form-rv">
+          <div class="date-group-rv">
+            <label for="checkin-rv">Fecha del vuelo:</label>
+            <input
+              type="date"
+              id="checkin-rv"
+              name="checkin-rv"
+              aria-describedby="checkin-error-rv"
+              required
+            />
+          </div>
+
+          <div class="guest-selector-rv">
+            <label for="guest-count-rv" style="font-weight: bold; color: #313131;"
+              >Cantidad de Boletos:</label
+            >
+            <div class="increment-buttons-rv">
+              <button type="button" class="decrement-rv">-</button>
+              <input
+                type="text"
+                id="guest-count-rv"
+                value="0"
+                readonly
+                class="room-count-rv"
+              />
+              <button type="button" class="increment-rv">+</button>
+            </div>
+          </div>
+
+          <div class="button-group-rv">
+            <button type="button" id="search-btn-rv" class="search-btn-rv" disabled>
+              Comprar Boletos
+            </button>
+            <button type="button" id="reset-btn-rv" class="reset-btn-rv">
+              Restablecer
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================== Reseñas ====================================== -->
+
+      <!-- Reseñas y calificaciones -->
+      <section class="reviews-section-rv">
+        <h2 style="color: #313131;">Reseñas</h2>
+        <!-- Listado de reseñas existentes -->
+        <div class="reviews-list-rv" style="background-color: #e6e6e6;">
+          <p>
+            <strong>Usuario 1:</strong>
+            <br /><span style="margin-left: 30px">Comentario</span> <br /><span
+              style="margin-left: 30px"
+              >Calificación: </span
+            ><span>★5</span>
+          </p>
+        </div>
+
+        <!-- Botón para habilitar la sección de dejar reseña -->
+        <button id="leave-review-btn-rv">Dejar reseña</button>
+
+        <!-- Formulario de reseñas oculto por defecto -->
+        <div id="review-form-rv" style="display: none">
+          <label for="review-text-rv">Dejar una reseña:</label>
+          <textarea
+            id="review-text-rv"
+            rows="3"
+            placeholder="Escribe tu reseña aquí"
+          ></textarea>
+          <label for="review-rating-rv">Calificación:</label>
+          <select id="review-rating-rv">
+            <option value="">☆☆☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button id="submit-review-btn-rv" disabled>Enviar reseña</button>
+          <button id="cancel-review-btn-rv" class="cancel-btn-rv">Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </body>
