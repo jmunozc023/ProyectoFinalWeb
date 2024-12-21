@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="estilosReservas/pagos.css" />
+    <link rel="stylesheet" href="estilosReservas/pagosHoteles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
     <title>Payment Page</title>
   </head>
   <body>
-
     <!-- Barra de navegación -->
     <div class="barranaranja">
       <nav class="navbar">
@@ -38,7 +38,7 @@
                 class="paymentMethods"
                 src="Imagenes/amex-logo.webp"
                 alt="Logo de American Express"
-                style="margin-bottom: 5px;"
+                style="margin-bottom: 5px"
               />
               <img
                 class="paymentMethods"
@@ -49,7 +49,7 @@
                 class="paymentMethods"
                 src="Imagenes/mastercardImg.png"
                 alt="Logo de MasterCard"
-                style="margin-bottom: 5px;"
+                style="margin-bottom: 5px"
               />
               <img
                 class="paymentMethods"
@@ -90,10 +90,10 @@
             </div>
           </div>
           <div class="finalize-container">
-            <button class="finalize-button" type="submit">
+            <button class="finalize-button" type="submit" disabled>
               Finalize Payment
             </button>
-            <label style="font-size: 10px;"
+            <label style="font-size: 10px"
               >By continuing, you accept our
               <a href="#">Terms and Conditions</a></label
             >
@@ -102,11 +102,14 @@
       </div>
 
       <!-- Contenedor de Detalles de Compra -->
-      <div class="details-container">
-        <h2>Purchase Details</h2>
-        <div id="payment-details" class="payment-details"></div>
-      </div>
+      <main class="payment-summary">
+        <h1>Resumen de tu reserva</h1>
+        <div id="reservation-summary">
+          <!-- Aquí se mostrará el desglose -->
+        </div>
+      </main>
     </div>
+
     <script>
       // Restricción para el input del nombre (solo letras, máximo 26 caracteres)
       const holderNameInput = document.getElementById("holder-name");
@@ -116,7 +119,7 @@
         if (value.length > 26) value = value.slice(0, 26); // Máximo 26 caracteres
         e.target.value = value.toUpperCase(); // Convierte a mayúsculas
       });
-    
+
       // Formateo y validación del número de tarjeta (solo números, formato 0000 0000 0000 0000)
       const cardNumberInput = document.getElementById("card-number");
       cardNumberInput.addEventListener("input", function (e) {
@@ -126,7 +129,7 @@
         value = value.match(/.{1,4}/g)?.join(" ") || ""; // Agrupa en bloques de 4 con espacio
         e.target.value = value;
       });
-    
+
       // Validación y formato de la fecha de expiración (solo números, formato MM/YY)
       const cardExpirationInput = document.getElementById("card-expiration");
       cardExpirationInput.addEventListener("input", function (e) {
@@ -138,7 +141,7 @@
         }
         e.target.value = value;
       });
-    
+
       // Validación del código de seguridad (CVV) (solo números, máximo 3 caracteres)
       const cardCodeInput = document.getElementById("card-code");
       cardCodeInput.addEventListener("input", function (e) {
@@ -148,61 +151,95 @@
         e.target.value = value;
       });
 
-
-
-
       // Mostrar datos de habitaciones seleccionadas en la página de pagos
 
-    document.addEventListener("DOMContentLoaded", function () {
-      // Recuperar los datos de habitaciones seleccionadas desde localStorage
-      const selectedRooms = JSON.parse(localStorage.getItem("selectedRooms"));
+      document.addEventListener("DOMContentLoaded", () => {
+        const reservationSummary = document.getElementById(
+          "reservation-summary"
+        );
+        const reservationDetails = JSON.parse(
+          localStorage.getItem("reservationDetails")
+        );
 
-      // Referencia al contenedor donde se mostrarán los datos
-      const paymentDetailsContainer =
-        document.getElementById("payment-details");
+        if (reservationDetails) {
+          // Crear un desglose detallado
+          reservationSummary.innerHTML = `
+      <p><i class="fas fa-calendar-alt"></i> <strong>Fecha de entrada:</strong> ${reservationDetails.checkinDate}</p>
+      <p><i class="fas fa-calendar-alt"></i> <strong>Fecha de salida:</strong> ${reservationDetails.checkoutDate}</p>
+      <p><i class="fas fa-moon"></i> <strong>Noches:</strong> ${reservationDetails.nights}</p>
+      <p><i class="fas fa-user"></i> <strong>Personas:</strong> ${reservationDetails.guestCount}</p>
+      <p><i class="fas fa-dollar-sign"></i> <strong>Precio por noche:</strong> $${reservationDetails.pricePerNight}</p>
+      <p><strong>Total:</strong> $${reservationDetails.totalCost}</p>
+    `;
+        } else {
+          reservationSummary.innerHTML = `<p>No se encontraron datos de reserva.</p>`;
+        }
 
-      // Función para calcular el total
-      function calculateTotal(rooms) {
-        return rooms
-          .reduce((total, room) => total + room.price * room.quantity, 0)
-          .toFixed(2); // Total con dos decimales
+        /*
+          <p><i class="fas fa-calendar-alt"></i> <strong>Check-in:</strong> 01/01/2025</p>
+          <p><i class="fas fa-calendar-alt"></i> <strong>Check-out:</strong> 07/01/2025</p>
+          <p><i class="fas fa-moon"></i> <strong>Nights:</strong> 6</p>
+          <p><i class="fas fa-user"></i> <strong>Guests:</strong> 2</p>
+          <p><i class="fas fa-dollar-sign"></i> <strong>Total:</strong> $600</p>
+        */
+
+
+        /* Código anterior en caso de perder conexción
+
+        <p><strong>Fecha de entrada:</strong> ${reservationDetails.checkinDate}</p>
+      <p><strong>Fecha de salida:</strong> ${reservationDetails.checkoutDate}</p>
+      <p><strong>Noches:</strong> ${reservationDetails.nights}</p>
+      <p><strong>Personas:</strong> ${reservationDetails.guestCount}</p>
+      <p><strong>Precio por noche:</strong> $${reservationDetails.pricePerNight}</p>
+      <p><strong>Total:</strong> $${reservationDetails.totalCost}</p>
+        
+        */
+
+        // Confirmar el pago
+        document
+          .getElementById("confirm-payment")
+          .addEventListener("click", () => {
+            alert("Pago confirmado. ¡Gracias por tu reserva!");
+            localStorage.removeItem("reservationDetails"); // Limpiar los datos
+          });
+      });
+
+      // Función para verificar si todos los campos están completos
+      function validatePaymentForm() {
+        const holderName = document.getElementById("holder-name").value.trim();
+        const cardNumber = document.getElementById("card-number").value.trim();
+        const cardExpiration = document
+          .getElementById("card-expiration")
+          .value.trim();
+        const cardCode = document.getElementById("card-code").value.trim();
+        const finalizeButton = document.querySelector(".finalize-button");
+
+        // Validar que todos los campos tengan contenido
+        if (
+          holderName !== "" &&
+          cardNumber.length === 19 && // Formato: 0000 0000 0000 0000
+          cardExpiration.length === 5 && // Formato: MM/YY
+          cardCode.length === 3 // Formato: 3 dígitos para CVV
+        ) {
+          finalizeButton.disabled = false; // Habilitar el botón
+        } else {
+          finalizeButton.disabled = true; // Deshabilitar el botón
+        }
       }
 
-      // Verificar si hay datos disponibles
-      if (selectedRooms && selectedRooms.length > 0) {
-        // Generar las filas dinámicamente
-        selectedRooms.forEach((room) => {
-          const roomRow = document.createElement("div");
-          roomRow.className = "room-row";
-
-          roomRow.innerHTML = `
-        <span class="room-type">${room.type}</span>
-        <span class="room-quantity">Cantidad: ${room.quantity}</span>
-        <span class="room-price">Precio: $${room.price.toFixed(2)}</span>
-        <span class="room-total">Subtotal: $${(
-          room.price * room.quantity
-        ).toFixed(2)}</span>
-      `;
-
-          paymentDetailsContainer.appendChild(roomRow);
+      // Asociar validación a los campos de entrada
+      document
+        .querySelectorAll(
+          "#holder-name, #card-number, #card-expiration, #card-code"
+        )
+        .forEach((input) => {
+          input.addEventListener("input", validatePaymentForm);
         });
 
-        // Calcular y mostrar el total general
-        const totalRow = document.createElement("div");
-        totalRow.className = "total-row";
-
-        totalRow.innerHTML = `
-      <strong>Total a pagar: $${calculateTotal(selectedRooms)}</strong>
-    `;
-
-        paymentDetailsContainer.appendChild(totalRow);
-      } else {
-        // Mostrar un mensaje si no hay datos disponibles
-        paymentDetailsContainer.innerHTML =
-          "<p>No se seleccionaron habitaciones. Por favor, regresa y selecciona una.</p>";
-      }
-    });
+      // Deshabilitar el botón de "Finalizar Pago" al cargar la página
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".finalize-button").disabled = true;
+      });
     </script>
-    
   </body>
 </html>
