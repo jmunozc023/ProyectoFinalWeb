@@ -1,0 +1,30 @@
+<div class="col-md-8 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Edicion del destino</h3>
+        </div>
+        <div class="card-body">
+            <form action="/destinos/edit-destino/{{destino._id}}?_method=PUT" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titulo:</label>
+                    <input type="text" class="form-control" name="title" value="{{destino.title}}">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripcion:</label>
+                    <input type="text" class="form-control" name="description" value="{{destino.description}}">
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Ubicacion:</label>
+                    <input type="text" class="form-control" name="location" value="{{destino.location}}">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Precio:</label>
+                    <input type="text" class="form-control" name="price" value="{{destino.price}}">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary btn-block">Actualizar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<h1>Editar Itinerario</h1>
+<form action="/itinerarios/edit-itinerario/{{itinerario._id}}?_method=PUT" method="POST">
+    <div class="form-group">
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" class="form-control" value="{{itinerario.title}}" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Descripción:</label>
+        <textarea name="description" id="description" class="form-control" required>{{itinerario.description}}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="destinos">Destinos:</label>
+        {{#each destinos}}
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="destinos[{{@index}}][destino]" value="{{this._id}}" {{#ifChecked this._id ../itinerario.destinos}}checked{{/ifChecked}}>
+                <label class="form-check-label">{{this.title}}</label>
+                <input type="date" class="form-control" name="destinos[{{@index}}][visitDate]" value="{{getVisitDate this._id ../itinerario.destinos}}">
+            </div>
+        {{/each}}
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar Itinerario</button>
+</form>

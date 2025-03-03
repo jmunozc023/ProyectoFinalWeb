@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservaciones</title>
+    <link rel="stylesheet" href="estilosReservas/reservaHotel.css" />
+    <script src="JsReservas/reservaHotel.js"></script>
+  </head>
+  <body>
+    <!-- ============ CÓDIGO DEPUÉS DEL REWORK ============-->
+
+    <!-- Barra de navegación -->
+    <div class="barranaranja">
+      <nav class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="#">Puntarenas</a>
+        </div>
+
+        <!-- Enlaces de navegación -->
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Encabezado del servicio -->
+    <header class="header">
+      <h1 id="hotel-name">Hotel Nombre</h1>
+    </header>
+
+    <!-- Galería de imágenes del hotel -->
+    <section class="image-gallery" id="image-gallery">
+      <img src="hotel1.jpg" alt="Habitación del hotel" />
+      <img src="hotel2.jpg" alt="Lobby del hotel" />
+      <img src="hotel3.jpg" alt="Restaurante del hotel" />
+    </section>
+
+    <main class="main-content">
+      <!-- Información del servicio -->
+      <section class="service-info">
+        <h2>Descripción</h2>
+        <p id="hotel-description">Descripción del hotel</p>
+        <ul>
+          <li id="hotel-price">Precio por noche: $<span id="price" class="price">100</span></li>
+          <li id="hotel-location">Ubicación: Desconocida</li>
+          <li id="hotel-services">Servicios: Ninguno</li>
+        </ul>
+      </section>
+
+      <!-- ================================ Reservas ================================ -->
+
+      <section id="date-selector">
+        <h2>Reserve aquí:</h2>
+        <div class="date-form">
+          <div class="date-group">
+            <label for="checkin">Fecha de entrada</label>
+            <input
+              type="date"
+              id="checkin"
+              name="checkin"
+              aria-describedby="checkin-error"
+              required
+            />
+          </div>
+
+          <div class="date-group">
+            <label for="checkout">Fecha de salida</label>
+            <input
+              type="date"
+              id="checkout"
+              name="checkout"
+              aria-describedby="checkout-error"
+              required
+            />
+          </div>
+
+          <div class="guest-selector">
+            <label for="guest-count" style="font-weight: bold"
+              >Cantidad de personas:</label
+            >
+            <div class="increment-buttons">
+              <button type="button" class="decrement">-</button>
+              <input
+                type="text"
+                id="guest-count"
+                value="0"
+                readonly
+                class="room-count"
+              />
+              <button type="button" class="increment">+</button>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button type="button" id="search-btn" class="search-btn" disabled>
+              Reservar
+            </button>
+            <button type="button" id="reset-btn" class="reset-btn">
+              Restablecer
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================== Reseñas ====================================== -->
+
+      <!-- Reseñas y calificaciones -->
+      <section class="reviews-section">
+        <h2>Reseñas</h2>
+        <!-- Listado de reseñas existentes -->
+        <div class="reviews-list">
+          <p>
+            <strong>Usuario 1:</strong>
+            <br /><span style="margin-left: 30px">Comentario</span> <br /><span
+              style="margin-left: 30px"
+              >Calificación:</span
+            ><span>★★★★★</span>
+          </p>
+        </div>
+
+        <!-- Botón para habilitar la sección de dejar reseña -->
+        <button id="leave-review-btn">Dejar reseña</button>
+
+        <!-- Formulario de reseñas oculto por defecto -->
+        <div id="review-form" style="display: none">
+          <label for="review-text">Dejar una reseña:</label>
+          <textarea
+            id="review-text"
+            rows="3"
+            placeholder="Escribe tu reseña aquí"
+          ></textarea>
+          <label for="review-rating">Calificación:</label>
+          <select id="review-rating">
+            <option value="">☆☆☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button id="submit-review-btn" disabled>Enviar reseña</button>
+          <button id="cancel-review-btn" class="cancel-btn">Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

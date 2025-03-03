@@ -1,0 +1,314 @@
+/* --------- General Styles --------- */
+body {
+  background-color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column; /* Cambiado a columna para acomodar la navbar */
+  justify-content: flex-start; /* Alinea el contenido al inicio */
+  align-items: center;
+  margin: 0;
+}
+
+/* --------- Navigation Bar Styles --------- */
+.barranaranja {
+  background-color: #f8a06a; /* Color de fondo */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 15px 10px; /* Ajuste de padding para mejor apariencia */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destacar la navbar */
+  position: fixed; /* Fija la navbar en la parte superior */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Asegura que la navbar esté por encima de otros elementos */
+}
+
+.navbar {
+  display: flex; /* Cambiado de grid a flex para mejor alineación */
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Limita el ancho total */
+  gap: 20px; /* Ajuste de espacio entre elementos */
+}
+
+.logo a {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffe4c4; /* Efecto hover */
+}
+
+/* --------- Adjust main container to avoid overlap with fixed navbar --------- */
+/* Contenedor principal */
+.container {
+  display: flex; /* Flexbox para organizar los elementos */
+  justify-content: space-between; /* Espacio entre los contenedores */
+  gap: 20px; /* Espacio entre los contenedores */
+  margin: 20px auto; /* Margen superior/inferior */
+  max-width: 900px; /* Ancho máximo */
+  flex-wrap: wrap; /* Permite que los elementos salten a otra línea si no hay espacio */
+}
+
+/* Contenedor padre que agrupa método de pago y detalles */
+.payment-details-container {
+  display: flex; /* Flexbox para alinear elementos lado a lado */
+  justify-content: space-between; /* Espacio entre elementos */
+  background-color: #ADD0C7; /* Fondo común */
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin: 0 auto; /* Centrar horizontalmente */
+  width: 1000px; /* Limitar el ancho */
+  gap: 15px; /* Espacio entre elementos */
+  margin-top: 80px;
+}
+
+/* Estilo para cada sección dentro del contenedor */
+.main, .payment-summary {
+  flex: 1; /* Ambas secciones ocupan el mismo espacio */
+  padding: 20px;
+  background-color: #f1f7f6; /* Color más claro para las secciones internas */
+  border-radius: 8px;
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Alinear el contenido dentro de la sección "Purchase Details" */
+.details-container {
+  text-align: left;
+}
+
+
+.checkout-container h1 {
+  text-align: left;
+  color: black;
+}
+
+h1 {
+  font-size: 25px;
+}
+
+.payment-methods-icons {
+  margin-top: 10px;
+  text-align: left; /* Alinea todo a la izquierda */
+}
+
+.payment-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.payment-icons-container {
+  background-color: white; /* Fondo blanco para el recuadro */
+  border: 1px solid #ccc; /* Borde sutil */
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-start; /* Alinea imágenes a la izquierda */
+  gap: 10px; /* Espacio entre imágenes */
+  max-width: 240px; /* Limita el ancho del recuadro */
+}
+
+.paymentMethods {
+  width: 40px;
+  height: auto;
+  border-radius: 5px; /* Opcional: bordes ligeramente redondeados */
+}
+
+.input, .input2 {
+  margin-bottom: 15px;
+}
+
+.input label, .input2 label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input input, .input2 input {
+  width: 95%;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+}
+
+.input2 input {
+  width: calc(50% - 10px);
+  display: inline-block;
+}
+
+/* Contenedor de Expiration Date y Security Code */
+.input-group {
+  display: flex;
+  gap: 15px; /* Espacio entre los dos campos */
+  margin-bottom: 15px; /* Espacio inferior */
+}
+
+.input-field {
+  flex: 1; /* Los campos ocupan el mismo espacio */
+}
+
+.input-field label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #000; /* Color del texto */
+}
+
+.input-field input {
+  width: 90%; /* Ancho completo del campo */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+
+/* --------- Finalize Payment Section --------- */
+.finalize-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.finalize-button {
+  background-color: #119E7B;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* Cambios de estilo cuando el botón está deshabilitado */
+.finalize-button:disabled {
+  background-color: #cccccc; /* Gris claro */
+  color: #666666; /* Texto gris oscuro */
+  cursor: not-allowed; /* Indicar que no se puede presionar */
+}
+
+/* Efecto hover para el botón habilitado */
+.finalize-button:not(:disabled):hover {
+  background-color: #0e7e5e;
+  transform: scale(1.05);
+}
+
+
+/* ======================================== DESGLOSE DE LA RESERVA ======================================== */
+
+.reservation-summary {
+  background-color: #f9f9f9; /* Fondo claro */
+  border: 1px solid #ddd; /* Borde sutil */
+  border-radius: 10px; /* Bordes redondeados */
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  margin: 20px auto;
+  max-width: 400px; /* Ancho máximo */
+}
+
+.reservation-summary h1 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.reservation-summary p {
+  font-size: 14px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.reservation-summary strong {
+  color: #000;
+}
+
+/* --------- Table Styles --------- */
+table {
+  background-color: #EAF6F3;
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-weight: bolder;
+  font-size: smaller;
+}
+
+table td, table th {
+  background-color: #EAF6F3;
+  height: 30px;
+  font-weight: normal;
+  padding: 5px;
+}
+
+table tbody tr td:first-child {
+  text-align: left;
+}
+
+table tfoot td {
+  font-weight: bold;
+}
+
+table caption {
+  text-align: left;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* --------- Responsive Styles --------- */
+@media (max-width: 600px) {
+  .main, .details-container {
+      padding: 20px;
+  }
+
+  .input2 input {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+
+  .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .nav-links {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+  }
+
+  .search-bar {
+      width: 100%;
+  }
+}
+

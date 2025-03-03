@@ -1,0 +1,30 @@
+<div class="col-md-10 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Ingresar reseña</h3>
+        </div>
+        <div class="card-body">
+            <form action="/resenas/new-resena" method="POST">
+                <div class="mb-3"></div>
+                    <label for="destino" class="form-label">Destino:</label>
+                    <select class="form-control" name="destinos[{{@index}}][destino]">
+                    {{#each destinos}}
+                        <option value="{{this._id}}">{{this.title}}</option>
+                    {{/each}}
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Calificacion:</label>
+                    <input type="text" class="form-control" name="rating" placeholder="Ingrese la calificacion">
+                </div>
+                <div class="mb-3">
+                    <label for="review" class="form-label">Comentario:</label>
+                    <input type="text" class="form-control" name="review" placeholder="Ingrese el comentario">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary btn-block">Crear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

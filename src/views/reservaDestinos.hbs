@@ -1,0 +1,111 @@
+  <body class="body-rd">
+
+    <!-- Encabezado del servicio -->
+    <header class="header-rd">
+      <h1 id="hotel-name-rd" style="color: azure;">Nombre del Destino</h1>
+    </header>
+
+    <!-- Galería de imágenes del hotel -->
+    <section class="image-gallery-rd" id="image-gallery-rd">
+      <img src="img.jpg" alt="Imágen Destino" />
+      <img src="img.jpg" alt="Imágen Destino" />
+      <img src="img.jpg" alt="Imágen Destino" />
+    </section>
+
+    <main class="main-content-rd">
+      <!-- Información del servicio -->
+      <section class="service-info-rd">
+        <h2>Descripción</h2>
+        <p id="hotel-description-rd">Descripción del destinos</p>
+        <ul>
+          <li id="hotel-price-rd">Precio por entrada: $<span id="price-rd" class="price-rd">100</span></li>
+        </ul>
+      </section>
+
+      <!-- ================================ Reservas ================================ -->
+
+      <section id="date-selector-rd">
+        <h2>Fecha y Cantidad de Entradas:</h2>
+        <div class="date-form-rd">
+          <div class="date-group-rd">
+            <label for="checkin-rd">Fecha de Reserva:</label>
+            <input
+              type="date"
+              id="checkin-rd"
+              name="checkin"
+              aria-describedby="checkin-error-rd"
+              required
+            />
+          </div>
+
+          <div class="guest-selector-rd">
+            <label for="guest-count-rd" style="font-weight: bold; color: #313131;"
+              >Cantidad de Entradas:</label
+            >
+            <div class="increment-buttons-rd">
+              <button type="button" class="decrement-rd">-</button>
+              <input
+                type="text"
+                id="guest-count-rd"
+                value="0"
+                readonly
+                class="room-count-rd"
+              />
+              <button type="button" class="increment-rd">+</button>
+            </div>
+          </div>
+
+          <div class="button-group-rd">
+            <button type="button" id="search-btn-rd" class="search-btn-rd" disabled>
+              Comprar entradas
+            </button>
+            <button type="button" id="reset-btn-rd" class="reset-btn-rd">
+              Restablecer
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================== Reseñas ====================================== -->
+
+      <!-- Reseñas y calificaciones -->
+      <section class="reviews-section-rd">
+        <h2 style="color: #313131;">Reseñas</h2>
+        <!-- Listado de reseñas existentes -->
+        <div class="reviews-list-rd" style="background-color: #e6e6e6;">
+          <p>
+            <strong>Usuario 1:</strong>
+            <br /><span style="margin-left: 30px">Comentario</span> <br/><span
+              style="margin-left: 30px"
+              >Calificación: </span
+            ><span>★5</span>
+          </p>
+        </div>
+
+        <!-- Botón para habilitar la sección de dejar reseña -->
+        <button id="leave-review-btn-rd">Dejar reseña</button>
+
+        <!-- Formulario de reseñas oculto por defecto -->
+        <div id="review-form-rd" style="display: none">
+          <label for="review-text-rd">Dejar una reseña:</label>
+          <textarea
+            id="review-text-rd"
+            rows="3"
+            placeholder="Escribe tu reseña aquí"
+          ></textarea>
+          <label for="review-rating-rd">Calificación:</label>
+          <select id="review-rating-rd">
+            <option value="">☆☆☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="4">★★★★☆</option>
+            <option value="5">★★★★★</option>
+          </select>
+          <button id="submit-review-btn-rd" disabled>Enviar reseña</button>
+          <button id="cancel-review-btn-rd" class="cancel-btn-rd">Cancelar</button>
+        </div>
+      </section>
+    </main>
+  </body>
+

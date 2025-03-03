@@ -1,0 +1,46 @@
+<div class="col-md-8 mx-auto">
+    <div class= "card">
+        <div class="card-body">
+        <h1 class="card-title mx-auto main">Crear una cuenta</h1>
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label for="first-name" class="form-label">Nombre(s):</label>
+                <input type="text" class="form-control" name="name" placeholder="Ingrese su nombre">
+            </div>
+            <div class="mb-3">
+                <label for="birthday" class="form-label">Fecha de nacimiento:</label>
+                <input type="date" class="form-control" name="birthday">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Correo electrónico:</label>
+                <input type="email" class="form-control" name="email" placeholder="Ingrese su correo electrónico">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" class="form-control" name="password" placeholder="Ingrese su contraseña">
+            </div>
+            <div class="mb-3">
+                <label for="confirm-password" class="form-label">Confirmar contraseña:</label>
+                <input type="password" class="form-control" name="confirm-password" placeholder="Confirme su contraseña">
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Role</label>
+                <select class="form-select" name="role">
+                    <option value="user">Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="legaltext">
+                <label class="form-check-label" for="legaltext">Al hacer click, acepto recibir correos electrónicos
+                    sobre noticias u ofertas de Puntarenas.</label>
+            </div>
+            <div class="mb-3">
+                 <button type="submit" class="btn btn-primary btn-block">Registrarse</button>
+            </div>
+           
+        </form>
+    </div>
+
+</div>
+    

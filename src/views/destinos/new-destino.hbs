@@ -1,0 +1,29 @@
+<div class="col-md-10 mx-auto">
+    <div class="card">
+        <div class="card-header">
+            <h3>Ingresar destino</h3>
+        </div>
+        <div class="card-body">
+            <form action="/destinos/new-destino" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Titulo:</label>
+                    <input type="text" class="form-control" name="title" placeholder="Ingrese el titulo">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripcion:</label>
+                    <input type="text" class="form-control" name="description" placeholder="Ingrese la descripcion">
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Ubicacion:</label>
+                    <input type="text" class="form-control" name="location" placeholder="Ingrese la ubicacion">
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">Precio:</label>
+                    <input type="text" class="form-control" name="price" placeholder="Ingrese el precio">
+                </div>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary btn-block">Crear</button>
+                </div>
+            </form>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="row">
+    {{#each destinos}}
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title d-flex justify-content-between align-items-center">
+                       
+                        {{title}} 
+                    </h4>
+                    <p>
+                        Descripcion: {{description}}
+                    </p>
+                    <p>
+                        Ubicacion: {{location}}
+                    </p>
+                    <p>
+                        Precio: {{price}}
+                    </p>
+                    
+                    <div class="d-flex mx-2 my-2">
+                        <form action="/destinos/delete/{{_id}}?_method=DELETE" method="POST">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                        </form>
+                        <form action="/">
+                            <input type="hidden" name="_method" value="GET">
+                            <button class="btn btn-primary btn-sm">Reservar</button>
+                        </form>
+                        <form action="/destinos/edit/{{_id}}" method="GET">
+                            <input type="hidden" name="_method" value="GET">
+                            <button class="btn btn-warning btn-sm">Edit</button>
+                        </form>
+
+                        <form action="../resenas" method="GET">
+                            <input type="hidden" name="_method" value="GET">
+                            <button class="btn btn-secondary btn-sm">Ver Reseñas</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    {{else}}
+        <div class="card mx-auto">
+            <div class="card-body">
+                <p class="lead">No hay destinos para mostrar</p>
+                <a href="/destinos/add" class="btn btn-success btn-block">Create One!</a>
+            </div>
+        </div>
+    {{/each}}
+</div>

@@ -1,0 +1,404 @@
+/* ============ CÓDIGO DEPUÉS DEL REWORK ============ */
+
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #ADD0C7;
+}
+
+/* ======================================== Barra de navegación ======================================== */
+
+/* Barra de navegación principal */
+.barranaranja {
+  background-color: #f8a06a; /* Color de fondo */
+  display: flex;
+  justify-content: center;
+  padding: 20px 10px;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 1fr;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Limita el ancho total */
+  gap: 10px;
+}
+
+/* Estilo del logo */
+.logo a {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Estilo de los enlaces */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ffe4c4; /* Efecto hover */
+}
+
+/* Barra de búsqueda */
+.search-bar {
+  position: relative;
+  width: 300px; /* Ajusta el tamaño */
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  font-size: 16px;
+  padding-right: 0; /* Espacio para la lupa */
+}
+
+/* Botón con la lupa */
+.search-bar button {
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.search-bar button img {
+  width: 20px; /* Tamaño de la lupa */
+  height: 20px;
+}
+
+/* ====================================== Header ====================================== */
+.header {
+  text-align: left;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+}
+
+/* Galería de imágenes */
+.image-gallery {
+  display: flex;
+  overflow-x: auto;
+  padding: 20px;
+  gap: 10px;
+  background: #f9f9f9;
+}
+
+.image-gallery img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Secciones generales */
+.service-info,
+#room-types-section,
+#date-selector,
+#available-rooms-section,
+.review-section {
+  margin: 15px auto; /* Centramos los márgenes */
+  padding: 15px;
+  border-radius: 8px;
+  background: #fff;
+  max-width: 1000px; /* Limitamos el ancho de las secciones */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Para un efecto visual más limpio */
+}
+
+.service-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* ============================== Estilos para selector de fechas ============================== */
+#date-selector {
+  background-color: #f8f8f8;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1000px;
+  margin: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#date-selector h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.date-form {
+  display: grid;
+  gap: 20px;
+}
+
+.date-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.date-group label {
+  font-weight: bold;
+  color: #333;
+}
+
+.date-group input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.guest-selector {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.increment-buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.increment-buttons button {
+  background-color: #f8a06a;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.increment-buttons button:hover {
+  background-color: #e78a50;
+}
+
+.increment-buttons input {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #fff;
+  outline: none;
+}
+
+.button-group {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.search-btn, .reset-btn {
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-btn {
+  background-color: #119E7B;
+  color: white;
+}
+
+.reset-btn {
+  background-color: #DC3545;
+  color: white;
+}
+
+.search-btn:hover {
+  background-color: #6fa396;
+  ;
+}
+
+.reset-btn:hover {
+  background-color: #e04a42;
+}
+
+/* Mensajes de error */
+.error-message {
+  color: red;
+  font-size: 0.85em;
+  margin-top: 5px;
+  display: block;
+}
+
+
+/* Botón habilitado (estilo actual) */
+.search-btn {
+  background-color: #119E7B;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón deshabilitado */
+.search-btn:disabled {
+  background-color: #cccccc; /* Gris */
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.search-btn {
+  transition: background-color 0.3s ease;
+}
+
+/* =============================================== Reseñas =============================================== */
+
+.reviews-section {
+  margin: 15px auto;
+  padding: 20px;
+  max-width: 1000px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-section{
+  text-align: Left;
+  margin-bottom: 15px;
+}
+
+.reviews-list {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  border-radius: 5px;
+}
+
+#leave-review-btn {
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px 15px;
+  background-color: #e78a50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+#leave-review-btn:hover {
+  background-color: #f8a06a;
+}
+
+#review-form {
+  text-align: center;
+}
+
+#review-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+#review-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+}
+
+#review-form select {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+#submit-review-btn {
+  padding: 10px 15px;
+  background-color: #119E7B;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#submit-review-btn:hover {
+  background-color: #6fa396;
+}
+
+.cancel-btn {
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.reviews-list p {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/* Botón habilitado */
+button#submit-review-btn {
+  background-color: #119E7B; /* Verde */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Botón deshabilitado */
+button#submit-review-btn:disabled {
+  background-color: #cccccc; /* Gris */
+  color: #666666;
+  cursor: not-allowed;
+}

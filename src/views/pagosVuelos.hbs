@@ -1,0 +1,196 @@
+<body class="body-ps">
+
+    <div class="payment-details-container-ps">
+      <!-- Contenedor de Métodos de Pago -->
+      <div class="main-ps">
+        <div class="checkout-container-ps">
+          <h1>Método de Pago</h1>
+          <div class="payment-methods-icons-ps">
+            <label for="payment-methods-ps">Tarjeta de crédito o débito:</label>
+            <div class="payment-methods-box-ps">
+              <img
+                class="paymentMethods-ps"
+                src="Imagenes/amex-logo.webp"
+                alt="Logo de American Express"
+                style="margin-bottom: 5px"
+              />
+              <img
+                class="paymentMethods-ps"
+                src="Imagenes/visaImg.png"
+                alt="Logo de Visa"
+              />
+              <img
+                class="paymentMethods-ps"
+                src="Imagenes/mastercardImg.png"
+                alt="Logo de MasterCard"
+                style="margin-bottom: 5px"
+              />
+              <img
+                class="paymentMethods-ps"
+                src="Imagenes/dinerClubImg.png"
+                alt="Logo de Diners Club"
+              />
+              <img
+                class="paymentMethods-ps"
+                src="Imagenes/discoverImg.png"
+                alt="Logo de Discover"
+              />
+            </div>
+          </div>
+          <div class="input-ps">
+            <label for="holder-name-ps">Nombre del propietario:</label>
+            <input
+              id="holder-name-ps"
+              type="text"
+              placeholder="Ingrese el número exactamente a como se muestra en la tarjeta"
+            />
+          </div>
+          <div class="input-ps">
+            <label for="card-number-ps">Número de tarjeta:</label>
+            <input
+              id="card-number-ps"
+              type="text"
+              placeholder="0000 0000 0000 0000"
+            />
+          </div>
+          <div class="input-group-ps">
+            <div class="input-field-ps">
+              <label for="card-expiration-ps">Fecha de expiración:</label>
+              <input id="card-expiration-ps" type="text" placeholder="MM/YY" />
+            </div>
+            <div class="input-field-ps">
+              <label for="card-code-ps">Código de seguridad:</label>
+              <input id="card-code-ps" type="text" placeholder="CVV" />
+            </div>
+          </div>
+          <div class="finalize-container-ps">
+            <button class="finalize-button-ps" type="submit" disabled>
+              Finalizar Pago
+            </button>
+            <label style="font-size: 10px"
+              >Al continuar, aceptas nuestros
+              <a href="#">Terminos y Condiciones</a></label
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- Contenedor de Detalles de Compra -->
+      <main class="payment-summary-ps">
+        <h1>Resumen de costos:</h1>
+        <div id="reservation-summary-ps">
+          <!-- Aquí se mostrará el desglose -->
+        </div>
+      </main>
+    </div>
+
+    <script>
+      // Restricción para el input del nombre (solo letras, máximo 26 caracteres)
+      const holderNameInput = document.getElementById("holder-name-ps");
+      holderNameInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/[^a-zA-Z\s]/g, ""); // Permite solo letras y espacios
+        if (value.length > 26) value = value.slice(0, 26); // Máximo 26 caracteres
+        e.target.value = value.toUpperCase(); // Convierte a mayúsculas
+      });
+
+      // Formateo y validación del número de tarjeta (solo números, formato 0000 0000 0000 0000)
+      const cardNumberInput = document.getElementById("card-number-ps");
+      cardNumberInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/\D/g, ""); // Elimina todo lo que no sea número
+        value = value.slice(0, 16); // Máximo 16 números
+        value = value.match(/.{1,4}/g)?.join(" ") || ""; // Agrupa en bloques de 4 con espacio
+        e.target.value = value;
+      });
+
+      // Validación y formato de la fecha de expiración (solo números, formato MM/YY)
+      const cardExpirationInput = document.getElementById("card-expiration-ps");
+      cardExpirationInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/\D/g, ""); // Elimina todo lo que no sea número
+        value = value.slice(0, 4); // Máximo 4 números
+        if (value.length >= 2) {
+          value = value.slice(0, 2) + "/" + value.slice(2); // Agrega la barra "/"
+        }
+        e.target.value = value;
+      });
+
+      // Validación del código de seguridad (CVV) (solo números, máximo 3 caracteres)
+      const cardCodeInput = document.getElementById("card-code-ps");
+      cardCodeInput.addEventListener("input", function (e) {
+        let value = e.target.value;
+        value = value.replace(/\D/g, ""); // Elimina todo lo que no sea número
+        if (value.length > 3) value = value.slice(0, 3); // Máximo 3 números
+        e.target.value = value;
+      });
+
+      // Mostrar datos de habitaciones seleccionadas en la página de pagos
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const reservationSummary = document.getElementById(
+          "reservation-summary-ps"
+        );
+        const reservationDetails = JSON.parse(
+          localStorage.getItem("reservationDetails")
+        );
+
+        if (reservationDetails) {
+          // Crear un desglose detallado
+          reservationSummary.innerHTML = `
+      <p><i class="fas fa-calendar-alt"></i> <strong>Fecha del vuelo: </strong> ${reservationDetails.checkinDate}</p>
+      <p><i class="fas fa-user"></i> <strong>Cantidad de boletos: </strong> ${reservationDetails.guestCount}</p>
+      <p><i class="fas fa-dollar-sign"></i> <strong>Precio por boleto:</strong> $${reservationDetails.pricePerNight}</p>
+      <p><strong>Total:</strong> $${reservationDetails.totalCost}</p>
+    `;
+        } else {
+          reservationSummary.innerHTML = `<p>No se encontraron datos de reserva.</p>`;
+        }
+
+        // Confirmar el pago
+        document
+          .getElementById("confirm-payment-ps")
+          .addEventListener("click", () => {
+            alert("Pago confirmado. ¡Gracias por tu reserva!");
+            localStorage.removeItem("reservationDetails"); // Limpiar los datos
+          });
+      });
+
+      // Función para verificar si todos los campos están completos
+      function validatePaymentForm() {
+        const holderName = document.getElementById("holder-name-ps").value.trim();
+        const cardNumber = document.getElementById("card-number-ps").value.trim();
+        const cardExpiration = document
+          .getElementById("card-expiration-ps")
+          .value.trim();
+        const cardCode = document.getElementById("card-code-ps").value.trim();
+        const finalizeButton = document.querySelector(".finalize-button-ps");
+
+        // Validar que todos los campos tengan contenido
+        if (
+          holderName !== "" &&
+          cardNumber.length === 19 && // Formato: 0000 0000 0000 0000
+          cardExpiration.length === 5 && // Formato: MM/YY
+          cardCode.length === 3 // Formato: 3 dígitos para CVV
+        ) {
+          finalizeButton.disabled = false; // Habilitar el botón
+        } else {
+          finalizeButton.disabled = true; // Deshabilitar el botón
+        }
+      }
+
+      // Asociar validación a los campos de entrada
+      document
+        .querySelectorAll(
+          "#holder-name-ps, #card-number-ps, #card-expiration-ps, #card-code-ps"
+        )
+        .forEach((input) => {
+          input.addEventListener("input", validatePaymentForm);
+        });
+
+      // Deshabilitar el botón de "Finalizar Pago" al cargar la página
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelector(".finalize-button-ps").disabled = true;
+      });
+    </script>
+  </body>
